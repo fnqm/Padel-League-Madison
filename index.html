@@ -141,16 +141,16 @@
     </header>
 
     <nav>
-        <button class="active" onclick="showSection('standings')">📊 Standings</button>
+        <button class="active" onclick="showSection('guidelines')">📋 Guidelines</button>
+        <button onclick="showSection('standings')">📊 Standings</button>
         <button onclick="showSection('matches')">🎯 Results</button>
         <button onclick="showSection('schedule')">📅 Schedule</button>
-        <button onclick="showSection('guidelines')">📋 Guidelines</button>
         <button onclick="showSection('photos')">📸 Photos</button>
         <button onclick="showSection('admin')">⚙️ Admin</button>
     </nav>
 
     <main>
-        <section id="standings" class="section active">
+        <section id="standings" class="section">
             <div class="season-selector">
                 <label>📅 Season:</label>
                 <select id="standings-season-select" onchange="changeViewingSeason(this.value)"></select>
@@ -191,7 +191,7 @@
             </div>
         </section>
 
-        <section id="guidelines" class="section">
+        <section id="guidelines" class="section active">
             <div class="card">
                 <h2 class="card-title">📋 League Guidelines — Winter 2026</h2>
             </div>
@@ -201,10 +201,10 @@
                 <ul>
                     <li><strong>Players:</strong> 8 core players + 2 official substitutes</li>
                     <li><strong>Match Day:</strong> Tuesdays</li>
-                    <li><strong>Time:</strong> 5:30–8:30 PM
+                    <li><strong>Time:</strong> 6:00–9:00 PM
                         <ul>
-                            <li>Match 1: 5:30–7:00 (4 players)</li>
-                            <li>Match 2: 7:00–8:30 (4 players)</li>
+                            <li>Match 1: 6:00–7:30 (4 players)</li>
+                            <li>Match 2: 7:30–9:00 (4 players)</li>
                         </ul>
                     </li>
                     <li><strong>Season Length:</strong>
