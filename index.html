@@ -556,13 +556,14 @@
         function renderSchedule() {
             const container = document.getElementById('schedule-list');
             const now = new Date();
-            const upcoming = leagueData.schedule.filter(s => new Date(s.date) >= new Date(now.toDateString())).sort((a, b) => new Date(a.date) - new Date(b.date) || a.time.localeCompare(b.time));
+            const upcoming = leagueData.schedule.filter(s => new Date(s.date + 'T23:59:59') >= new Date(now.toDateString())).sort((a, b) => new Date(a.date) - new Date(b.date) || a.time.localeCompare(b.time));
             if (upcoming.length === 0) {
                 container.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📅</div><p>No upcoming games scheduled</p></div>';
                 return;
             }
             container.innerHTML = upcoming.map(g => {
-                const d = new Date(g.date);
+                const [year, month, day] = g.date.split('-');
+                const d = new Date(year, month - 1, day);
                 const time = g.time ? new Date(`2000-01-01T${g.time}`).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }) : 'TBD';
                 const matchup = g.team2 ? `${g.team1} vs ${g.team2}` : g.team1;
                 return `<div class="schedule-item">
