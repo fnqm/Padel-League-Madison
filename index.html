@@ -199,12 +199,12 @@
             <div class="guideline-card">
                 <h3><span class="g-num">1</span> League Structure</h3>
                 <ul>
-                    <li><strong>Players:</strong> 8 core players + 2 official substitutes</li>
+                    <li><strong>Players:</strong> 8 core players</li>
                     <li><strong>Match Day:</strong> Tuesdays</li>
-                    <li><strong>Time:</strong> 6:00–9:00 PM
+                    <li><strong>Time:</strong> 5:30–8:30 PM
                         <ul>
-                            <li>Match 1: 6:00–7:30 (4 players)</li>
-                            <li>Match 2: 7:30–9:00 (4 players)</li>
+                            <li>Match 1: 5:30–7:00 (4 players)</li>
+                            <li>Match 2: 7:00–8:30 (4 players)</li>
                         </ul>
                     </li>
                     <li><strong>Season Length:</strong>
@@ -223,6 +223,7 @@
                     <li>Partners alternate every set</li>
                     <li>Players for each match and set are selected randomly, with the goal of ensuring players compete with different partners and opponents as much as possible throughout the season; the organizer may make minor adjustments to minimize repeated combinations</li>
                     <li>Players must track games won and lost</li>
+                    <li>One player from each match must update the score on the Google Sheet that will be provided</li>
                 </ul>
                 <div class="highlight">📊 <strong>Standings & Ranking:</strong> Rankings are based on total games won (not sets won). Tiebreaker: number of matches won.</div>
             </div>
@@ -255,17 +256,9 @@
                 <h3><span class="g-num">5</span> Substitution Policy</h3>
                 <ul>
                     <li>Players must notify the group chat at least <strong>3 days in advance</strong> if they cannot attend</li>
-                    <li>The two official substitutes have <strong>first priority</strong> to fill the open spot</li>
-                    <li>If neither official substitute is available, external substitutes may be contacted</li>
+                    <li><strong>Finding a substitute is the responsibility of the player who will be absent</strong></li>
+                    <li>The group chat includes people willing to play as subs — sharing the date and time in the chat is a good way to find a replacement</li>
                     <li>If no substitute can be found, the match will be rescheduled as a last resort</li>
-                </ul>
-            </div>
-
-            <div class="guideline-card">
-                <h3><span class="g-num">6</span> General Conduct</h3>
-                <ul>
-                    <li>Players are responsible for accurate score reporting (Google Sheet will be shared with all players)</li>
-                    <li>Sportsmanship and fair play are expected at all times 🤝</li>
                 </ul>
             </div>
         </section>
@@ -437,42 +430,30 @@
             seasons: {
                 'Winter 2026': {
                     players: [
-                        { id: 1, name: 'Carlos Martinez', points: 12, matchesWon: 2, matchesLost: 0 },
-                        { id: 2, name: 'Sarah Johnson', points: 6, matchesWon: 1, matchesLost: 0 },
-                        { id: 3, name: 'Mike Chen', points: 10, matchesWon: 1, matchesLost: 1 },
-                        { id: 4, name: 'Emily Davis', points: 4, matchesWon: 0, matchesLost: 1 },
-                        { id: 5, name: 'Alex Rivera', points: 5, matchesWon: 0, matchesLost: 2 },
-                        { id: 6, name: 'Lisa Thompson', points: 3, matchesWon: 0, matchesLost: 1 },
-                        { id: 7, name: 'David Kim', points: 8, matchesWon: 1, matchesLost: 1 },
-                        { id: 8, name: 'Anna Wilson', points: 6, matchesWon: 1, matchesLost: 0 }
+                        { id: 1, name: 'Will Wait', points: 0, matchesWon: 0, matchesLost: 0 },
+                        { id: 2, name: 'Patrick Grant', points: 0, matchesWon: 0, matchesLost: 0 },
+                        { id: 3, name: 'Robb Warren', points: 0, matchesWon: 0, matchesLost: 0 },
+                        { id: 4, name: 'Josh Pelletter', points: 0, matchesWon: 0, matchesLost: 0 },
+                        { id: 5, name: 'Felipe Quaassdorff', points: 0, matchesWon: 0, matchesLost: 0 },
+                        { id: 6, name: 'Missy Dunn', points: 0, matchesWon: 0, matchesLost: 0 },
+                        { id: 7, name: 'Dave Vitale', points: 0, matchesWon: 0, matchesLost: 0 },
+                        { id: 8, name: 'George Frese', points: 0, matchesWon: 0, matchesLost: 0 }
                     ],
-                    matches: [
-                        { id: 1, date: '2026-01-25', team1: ['Carlos Martinez', 'Sarah Johnson'], team2: ['Mike Chen', 'Emily Davis'], score1: 6, score2: 4 },
-                        { id: 2, date: '2026-01-24', team1: ['Alex Rivera', 'Lisa Thompson'], team2: ['David Kim', 'Anna Wilson'], score1: 3, score2: 6 },
-                        { id: 3, date: '2026-01-22', team1: ['Carlos Martinez', 'Mike Chen'], team2: ['Alex Rivera', 'David Kim'], score1: 6, score2: 2 }
-                    ]
-                },
-                'Fall 2025': {
-                    players: [
-                        { id: 1, name: 'Carlos Martinez', points: 45, matchesWon: 7, matchesLost: 2 },
-                        { id: 2, name: 'Mike Chen', points: 38, matchesWon: 6, matchesLost: 3 },
-                        { id: 3, name: 'Sarah Johnson', points: 32, matchesWon: 5, matchesLost: 4 },
-                        { id: 4, name: 'Alex Rivera', points: 28, matchesWon: 4, matchesLost: 5 }
-                    ],
-                    matches: [
-                        { id: 1, date: '2025-11-15', team1: ['Carlos Martinez', 'Sarah Johnson'], team2: ['Mike Chen', 'Alex Rivera'], score1: 6, score2: 3 },
-                        { id: 2, date: '2025-11-10', team1: ['Mike Chen', 'Carlos Martinez'], team2: ['Sarah Johnson', 'Alex Rivera'], score1: 6, score2: 5 }
-                    ]
+                    matches: []
                 }
             },
             schedule: [
-                { id: 1, date: '2026-02-01', time: '18:00', team1: 'Carlos & Sarah', team2: 'Alex & Lisa', location: 'Madison Padel Club' },
-                { id: 2, date: '2026-02-03', time: '19:30', team1: 'Mike & Emily', team2: 'David & Anna', location: 'Capitol Padel Center' },
-                { id: 3, date: '2026-02-08', time: '10:00', team1: 'Sarah & Mike', team2: 'Carlos & Emily', location: 'Madison Padel Club' }
+                { id: 1, date: '2026-02-10', time: '17:30', team1: 'Patrick, Missy, Dave, George', team2: '', location: 'Court 2' },
+                { id: 2, date: '2026-02-10', time: '19:00', team1: 'Will, Felipe, Robb, Josh', team2: '', location: 'Court 2' },
+                { id: 3, date: '2026-02-17', time: '17:30', team1: 'Robb, Dave, Josh, George', team2: '', location: 'Court 1' },
+                { id: 4, date: '2026-02-17', time: '19:00', team1: 'Will, Patrick, Felipe, Missy', team2: '', location: 'Court 1' },
+                { id: 5, date: '2026-02-24', time: '17:30', team1: 'Will, Robb, Patrick, Dave', team2: '', location: 'Court 1' },
+                { id: 6, date: '2026-02-24', time: '19:00', team1: 'Felipe, Josh, Missy, George', team2: '', location: 'Court 1' },
+                { id: 7, date: '2026-03-03', time: '17:30', team1: 'Will, Missy, Josh, Dave', team2: '', location: 'Court 1' },
+                { id: 8, date: '2026-03-03', time: '19:00', team1: 'Felipe, Patrick, Robb, George', team2: '', location: 'Court 1' }
             ],
             photos: {
-                'Winter 2026': [],
-                'Fall 2025': []
+                'Winter 2026': []
             }
         };
 
@@ -575,7 +556,7 @@
         function renderSchedule() {
             const container = document.getElementById('schedule-list');
             const now = new Date();
-            const upcoming = leagueData.schedule.filter(s => new Date(s.date) >= new Date(now.toDateString())).sort((a, b) => new Date(a.date) - new Date(b.date));
+            const upcoming = leagueData.schedule.filter(s => new Date(s.date) >= new Date(now.toDateString())).sort((a, b) => new Date(a.date) - new Date(b.date) || a.time.localeCompare(b.time));
             if (upcoming.length === 0) {
                 container.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📅</div><p>No upcoming games scheduled</p></div>';
                 return;
@@ -583,9 +564,10 @@
             container.innerHTML = upcoming.map(g => {
                 const d = new Date(g.date);
                 const time = g.time ? new Date(`2000-01-01T${g.time}`).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }) : 'TBD';
+                const matchup = g.team2 ? `${g.team1} vs ${g.team2}` : g.team1;
                 return `<div class="schedule-item">
                     <div class="schedule-date"><div class="schedule-day">${d.getDate()}</div><div class="schedule-month">${d.toLocaleDateString('en-US', { month: 'short' })}</div></div>
-                    <div class="schedule-details"><div class="schedule-time">⏰ ${time} @ ${g.location || 'TBD'}</div><div class="schedule-matchup">${g.team1} vs ${g.team2}</div></div>
+                    <div class="schedule-details"><div class="schedule-time">⏰ ${time} @ ${g.location || 'TBD'}</div><div class="schedule-matchup">🎾 ${matchup}</div></div>
                 </div>`;
             }).join('');
         }
