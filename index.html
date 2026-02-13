@@ -165,6 +165,7 @@
                             <th>#</th>
                             <th>Player</th>
                             <th class="stat">Points</th>
+                            <th class="stat">Eff%</th>
                             <th class="stat">MW</th>
                             <th class="stat">ML</th>
                         </tr>
@@ -225,7 +226,8 @@
                     <li>Players must track games won and lost</li>
                     <li>One player from each match must update the score on the Google Sheet that will be provided</li>
                 </ul>
-                <div class="highlight">📊 <strong>Standings & Ranking:</strong> Rankings are based on total games won (not sets won). Tiebreaker: number of matches won.</div>
+                <div class="highlight">📊 <strong>Standings & Ranking:</strong> Rankings are based on total games won (not sets won). Tiebreaker: number of sets won.</div>
+                <div class="highlight">📈 <strong>Efficacy % (Eff%):</strong> Measures how many games you won out of the maximum possible. Calculated as: Points ÷ Max Possible Points. Example: If you played sets with scores 6-3, 4-6, and 6-1, your max possible is 6+6+6=18. If you won 6+4+6=16 points, your Eff% is 16/18 = 89%.</div>
             </div>
 
             <div class="guideline-card">
@@ -430,16 +432,23 @@
             seasons: {
                 'Winter 2026': {
                     players: [
-                        { id: 1, name: 'Will Wait', points: 0, matchesWon: 0, matchesLost: 0 },
-                        { id: 2, name: 'Patrick Grant', points: 0, matchesWon: 0, matchesLost: 0 },
-                        { id: 3, name: 'Robb Warren', points: 0, matchesWon: 0, matchesLost: 0 },
-                        { id: 4, name: 'Josh Pelletter', points: 0, matchesWon: 0, matchesLost: 0 },
-                        { id: 5, name: 'Felipe Quaassdorff', points: 0, matchesWon: 0, matchesLost: 0 },
-                        { id: 6, name: 'Missy Dunn', points: 0, matchesWon: 0, matchesLost: 0 },
-                        { id: 7, name: 'Dave Vitale', points: 0, matchesWon: 0, matchesLost: 0 },
-                        { id: 8, name: 'George Frese', points: 0, matchesWon: 0, matchesLost: 0 }
+                        { id: 1, name: 'Will Wait', points: 16, maxGames: 18, matchesWon: 2, matchesLost: 1 },
+                        { id: 2, name: 'Patrick Grant', points: 13, maxGames: 19, matchesWon: 1, matchesLost: 2 },
+                        { id: 3, name: 'Robb Warren', points: 8, maxGames: 18, matchesWon: 0, matchesLost: 3 },
+                        { id: 4, name: 'Josh Pelletter', points: 15, maxGames: 18, matchesWon: 2, matchesLost: 1 },
+                        { id: 5, name: 'Felipe Quaassdorff', points: 13, maxGames: 18, matchesWon: 2, matchesLost: 1 },
+                        { id: 6, name: 'Missy Dunn', points: 9, maxGames: 19, matchesWon: 1, matchesLost: 2 },
+                        { id: 7, name: 'Dave Vitale', points: 19, maxGames: 19, matchesWon: 3, matchesLost: 0 },
+                        { id: 8, name: 'George Frese', points: 13, maxGames: 19, matchesWon: 1, matchesLost: 2 }
                     ],
-                    matches: []
+                    matches: [
+                        { id: 1, date: '2026-02-10', team1: ['Patrick Grant', 'Missy Dunn'], team2: ['Dave Vitale', 'George Frese'], score1: 1, score2: 6 },
+                        { id: 2, date: '2026-02-10', team1: ['Patrick Grant', 'Dave Vitale'], team2: ['Missy Dunn', 'George Frese'], score1: 6, score2: 1 },
+                        { id: 3, date: '2026-02-10', team1: ['Patrick Grant', 'George Frese'], team2: ['Missy Dunn', 'Dave Vitale'], score1: 6, score2: 7 },
+                        { id: 4, date: '2026-02-10', team1: ['Will Wait', 'Felipe Quaassdorff'], team2: ['Robb Warren', 'Josh Pelletter'], score1: 6, score2: 3 },
+                        { id: 5, date: '2026-02-10', team1: ['Will Wait', 'Robb Warren'], team2: ['Felipe Quaassdorff', 'Josh Pelletter'], score1: 4, score2: 6 },
+                        { id: 6, date: '2026-02-10', team1: ['Will Wait', 'Josh Pelletter'], team2: ['Felipe Quaassdorff', 'Robb Warren'], score1: 6, score2: 1 }
+                    ]
                 }
             },
             schedule: [
@@ -509,16 +518,18 @@
             const tbody = document.getElementById('standings-body');
             const seasonData = leagueData.seasons[viewingSeason];
             if (!seasonData || seasonData.players.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="5"><div class="empty-state"><div class="empty-state-icon">🎾</div><p>No players in this season</p></div></td></tr>';
+                tbody.innerHTML = '<tr><td colspan="6"><div class="empty-state"><div class="empty-state-icon">🎾</div><p>No players in this season</p></div></td></tr>';
                 return;
             }
             const sorted = [...seasonData.players].sort((a, b) => b.points - a.points || b.matchesWon - a.matchesWon);
             tbody.innerHTML = sorted.map((p, i) => {
                 const rankClass = i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '';
+                const efficacy = p.maxGames > 0 ? Math.round((p.points / p.maxGames) * 100) : 0;
                 return `<tr onclick="showPlayerProfile('${p.name}')" style="cursor:pointer">
                     <td class="rank ${rankClass}">${i + 1}</td>
                     <td class="player-name">${p.name}</td>
                     <td class="stat"><span class="total-wins">${p.points}</span></td>
+                    <td class="stat"><span class="win-rate">${efficacy}%</span></td>
                     <td class="stat">${p.matchesWon}</td>
                     <td class="stat">${p.matchesLost}</td>
                 </tr>`;
@@ -642,7 +653,7 @@
             if (!name) { showToast('Please enter a player name'); return; }
             const data = leagueData.seasons[leagueData.currentSeason];
             if (data.players.some(p => p.name.toLowerCase() === name.toLowerCase())) { showToast('Player already exists in this season'); return; }
-            data.players.push({ id: Date.now(), name, points: 0, matchesWon: 0, matchesLost: 0 });
+            data.players.push({ id: Date.now(), name, points: 0, maxGames: 0, matchesWon: 0, matchesLost: 0 });
             saveData();
             renderStandings();
             populatePlayerDropdowns();
@@ -664,10 +675,11 @@
             data.matches.push({ id: Date.now(), date, team1, team2, score1, score2 });
             const winners = score1 > score2 ? team1 : team2;
             const losers = score1 > score2 ? team2 : team1;
-            const winnerPoints = score1 > score2 ? score1 : score2;
-            const loserPoints = score1 > score2 ? score2 : score1;
-            winners.forEach(n => { const p = data.players.find(x => x.name === n); if (p) { p.points += winnerPoints; p.matchesWon++; } });
-            losers.forEach(n => { const p = data.players.find(x => x.name === n); if (p) { p.points += loserPoints; p.matchesLost++; } });
+            const maxGames = Math.max(score1, score2);
+            team1.forEach(n => { const p = data.players.find(x => x.name === n); if (p) { p.points += score1; p.maxGames += maxGames; } });
+            team2.forEach(n => { const p = data.players.find(x => x.name === n); if (p) { p.points += score2; p.maxGames += maxGames; } });
+            winners.forEach(n => { const p = data.players.find(x => x.name === n); if (p) { p.matchesWon++; } });
+            losers.forEach(n => { const p = data.players.find(x => x.name === n); if (p) { p.matchesLost++; } });
             saveData();
             if (viewingSeason === leagueData.currentSeason) { renderStandings(); renderMatches(); }
             ['team1-player1', 'team1-player2', 'team2-player1', 'team2-player2'].forEach(id => document.getElementById(id).value = '');
@@ -696,6 +708,7 @@
             if (!p) return;
             const totalMatches = p.matchesWon + p.matchesLost;
             const winRate = totalMatches > 0 ? Math.round((p.matchesWon / totalMatches) * 100) : 0;
+            const efficacy = p.maxGames > 0 ? Math.round((p.points / p.maxGames) * 100) : 0;
             const initials = name.split(' ').map(n => n[0]).join('').toUpperCase();
             const matches = data.matches.filter(m => m.team1.includes(name) || m.team2.includes(name)).slice(0, 5);
             document.getElementById('player-modal-content').innerHTML = `
@@ -704,10 +717,10 @@
                 <p style="text-align:center;color:var(--text-light)">${viewingSeason}</p>
                 <div class="player-stats-grid">
                     <div class="stat-item"><div class="stat-value">${p.points}</div><div class="stat-label">Total Points</div></div>
-                    <div class="stat-item"><div class="stat-value">${p.matchesWon}-${p.matchesLost}</div><div class="stat-label">Matches W-L</div></div>
-                    <div class="stat-item"><div class="stat-value">${winRate}%</div><div class="stat-label">Win Rate</div></div>
+                    <div class="stat-item"><div class="stat-value">${efficacy}%</div><div class="stat-label">Efficacy</div></div>
+                    <div class="stat-item"><div class="stat-value">${p.matchesWon}-${p.matchesLost}</div><div class="stat-label">Sets W-L</div></div>
                 </div>
-                ${matches.length > 0 ? `<h4 style="margin-top:1.5rem;margin-bottom:0.75rem">Recent Matches</h4>
+                ${matches.length > 0 ? `<h4 style="margin-top:1.5rem;margin-bottom:0.75rem">Recent Sets</h4>
                 ${matches.map(m => {
                     const inT1 = m.team1.includes(name);
                     const won = (inT1 && m.score1 > m.score2) || (!inT1 && m.score2 > m.score1);
