@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,9 +37,9 @@ body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-s
 .season-tab.aw { color: var(--accent); border-bottom-color: var(--accent); background: rgba(200,240,69,0.04); }
 .season-tab.as { color: var(--spring); border-bottom-color: var(--spring); background: rgba(240,120,69,0.04); }
 
-.nav { display: flex; gap: 2px; padding: 10px 16px; overflow-x: auto; border-bottom: 1px solid var(--border); background: var(--bg); scrollbar-width: none; justify-content: center; }
+.nav { display: flex; flex-wrap: wrap; gap: 4px; padding: 8px 12px; border-bottom: 1px solid var(--border); background: var(--bg); justify-content: center; }
 .nav::-webkit-scrollbar { display: none; }
-.nav-btn { flex-shrink: 0; background: transparent; border: 1px solid transparent; color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; padding: 7px 14px; border-radius: 8px; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+.nav-btn { flex-shrink: 0; background: transparent; border: 1px solid transparent; color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; padding: 7px 12px; border-radius: 8px; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
 .nav-btn:hover { color: var(--text); background: var(--surface2); }
 .nav-btn.aw { background: rgba(200,240,69,0.08); border-color: rgba(200,240,69,0.2); color: var(--accent); }
 .nav-btn.as { background: rgba(240,120,69,0.08); border-color: rgba(240,120,69,0.2); color: var(--spring); }
@@ -394,15 +395,15 @@ tbody tr:hover { background: var(--surface2); }
       </div>
       <div class="fixture-court">
         <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 5:30 PM</div>
-        <div class="fixture-mini"><div class="fixture-player">Eric Engen</div><div class="fixture-player">Kathleen McNeil</div><div class="fixture-player">Patrick Grant</div><div class="fixture-player">Josh Pelletter</div></div>
+        <div class="fixture-mini"><div class="fixture-player">Eric Engen</div><div class="fixture-player">Kathleen McNeil</div><div class="fixture-player">Patrick Grant</div><div class="fixture-player">Will Wait</div></div>
       </div>
       <div class="fixture-court">
         <div class="fixture-court-hdr fc-c1"><span class="fixture-dot fd-c1"></span>Court 1 · 7:00 PM</div>
-        <div class="fixture-mini"><div class="fixture-player">Robb Warren</div><div class="fixture-player">TBD</div><div class="fixture-player">Stacy Reid</div><div class="fixture-player">Cliff Tribus</div></div>
+        <div class="fixture-mini"><div class="fixture-player">Robb Warren</div><div class="fixture-player">Shelby/Jack</div><div class="fixture-player">Stacy Reid</div><div class="fixture-player">Cliff Tribus</div></div>
       </div>
       <div class="fixture-court">
         <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 7:00 PM</div>
-        <div class="fixture-mini"><div class="fixture-player">Felipe Quaassdorff</div><div class="fixture-player">Will Wait</div><div class="fixture-player">JD Maloney</div><div class="fixture-player">Tammy Krez</div></div>
+        <div class="fixture-mini"><div class="fixture-player">Felipe Quaassdorff</div><div class="fixture-player">Josh Pelletter</div><div class="fixture-player">JD Maloney</div><div class="fixture-player">Tammy Krez</div></div>
       </div>
     </div>
   </div>
