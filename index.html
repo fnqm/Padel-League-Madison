@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -384,29 +385,6 @@ tbody tr:hover { background: var(--surface2); }
     .split-banner span { color: var(--muted); font-weight: 400; font-size: 12px; margin-left: 4px; }
   </style>
 
-  <!-- WEEK 1 -->
-  <div class="fixture-week">
-    <div class="fixture-week-hdr">Week 1 · Mar 31, 2026</div>
-    <div class="fixture-courts">
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c1"><span class="fixture-dot fd-c1"></span>Court 1 · 5:30 PM</div>
-        <div class="fixture-mini"><div class="fixture-player">Missy Dunn</div><div class="fixture-player">George Frese</div><div class="fixture-player">Marc Gerothanas</div><div class="fixture-player">Jay Issacson</div></div>
-      </div>
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 5:30 PM</div>
-        <div class="fixture-mini"><div class="fixture-player">Eric Engen</div><div class="fixture-player">Kathleen McNeil</div><div class="fixture-player">Patrick Grant</div><div class="fixture-player">Will Wait</div></div>
-      </div>
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c1"><span class="fixture-dot fd-c1"></span>Court 1 · 7:00 PM</div>
-        <div class="fixture-mini"><div class="fixture-player">Robb Warren</div><div class="fixture-player">Shelby/Jack</div><div class="fixture-player">Stacy Reid</div><div class="fixture-player">Cliff Tribus</div></div>
-      </div>
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 7:00 PM</div>
-        <div class="fixture-mini"><div class="fixture-player">Felipe Quaassdorff</div><div class="fixture-player">Josh Pelletter</div><div class="fixture-player">JD Maloney</div><div class="fixture-player">Tammy Krez</div></div>
-      </div>
-    </div>
-  </div>
-
   <!-- WEEK 2 -->
   <div class="fixture-week">
     <div class="fixture-week-hdr">Week 2 · Apr 7, 2026</div>
@@ -574,39 +552,191 @@ function renderWPlayers() {
   }).join('');
 }
 
+// ─── SPRING DATA ──────────────────────────────────────────────
+const SPRING_MATCHES = [
+  // ── Week 1 · Court 1 · 7:00 PM — Robb Warren's OWN slot, points COUNT ──
+  { date:'2026-03-31', week:1, court:'Court 1', time:'7:00 PM',
+    t1:['Robb Warren','Shelby/Jack'], t2:['Stacy Reid','Cliff Tribus'], s1:2, s2:6,
+    subs:[] },
+  { date:'2026-03-31', week:1, court:'Court 1', time:'7:00 PM',
+    t1:['Robb Warren','Stacy Reid'], t2:['Shelby/Jack','Cliff Tribus'], s1:5, s2:3,
+    subs:[] },
+  { date:'2026-03-31', week:1, court:'Court 1', time:'7:00 PM',
+    t1:['Robb Warren','Cliff Tribus'], t2:['Shelby/Jack','Stacy Reid'], s1:6, s2:2,
+    subs:[] },
+
+  // ── Week 1 · Court 1 · 5:30 PM — Robb subbing Missy's slot, Robb's points EXCLUDED ──
+  { date:'2026-03-31', week:1, court:'Court 1', time:'5:30 PM',
+    t1:['Robb Warren','George Frese'], t2:['Marc Gerothanas','Jay Issacson'], s1:4, s2:4,
+    subs:['Robb Warren'] },
+  { date:'2026-03-31', week:1, court:'Court 1', time:'5:30 PM',
+    t1:['Robb Warren','Marc Gerothanas'], t2:['George Frese','Jay Issacson'], s1:8, s2:0,
+    subs:['Robb Warren'] },
+  { date:'2026-03-31', week:1, court:'Court 1', time:'5:30 PM',
+    t1:['Robb Warren','Jay Issacson'], t2:['George Frese','Marc Gerothanas'], s1:1, s2:7,
+    subs:['Robb Warren'] },
+
+  // ── Week 1 · Court 2 · 5:30 PM — Tammy subbing Kathleen's slot, Tammy's points EXCLUDED ──
+  { date:'2026-03-31', week:1, court:'Court 2', time:'5:30 PM',
+    t1:['Eric Engen','Tammy Krez'], t2:['Patrick Grant','Will Wait'], s1:1, s2:7,
+    subs:['Tammy Krez'] },
+  { date:'2026-03-31', week:1, court:'Court 2', time:'5:30 PM',
+    t1:['Eric Engen','Patrick Grant'], t2:['Tammy Krez','Will Wait'], s1:3, s2:5,
+    subs:['Tammy Krez'] },
+  { date:'2026-03-31', week:1, court:'Court 2', time:'5:30 PM',
+    t1:['Eric Engen','Will Wait'], t2:['Tammy Krez','Patrick Grant'], s1:4, s2:4,
+    subs:['Tammy Krez'] },
+
+  // ── Week 1 · Court 2 · 7:00 PM — Tammy's OWN slot, points COUNT ──
+  { date:'2026-03-31', week:1, court:'Court 2', time:'7:00 PM',
+    t1:['Felipe Quaassdorff','Josh Pelletter'], t2:['JD Maloney','Tammy Krez'], s1:5, s2:3,
+    subs:[] },
+  { date:'2026-03-31', week:1, court:'Court 2', time:'7:00 PM',
+    t1:['Felipe Quaassdorff','JD Maloney'], t2:['Josh Pelletter','Tammy Krez'], s1:4, s2:4,
+    subs:[] },
+  { date:'2026-03-31', week:1, court:'Court 2', time:'7:00 PM',
+    t1:['Felipe Quaassdorff','Tammy Krez'], t2:['Josh Pelletter','JD Maloney'], s1:4, s2:4,
+    subs:[] },
+];
+
+// Players whose points COUNT in standings (not subs)
+const SPRING_PLAYERS = [
+  'Felipe Quaassdorff','Cliff Tribus','Patrick Grant','JD Maloney',
+  'Kathleen McNeil','Shelby/Jack','George Frese',
+  'Stacy Reid','Tammy Krez','Robb Warren','Josh Pelletter',
+  'Will Wait','Eric Engen','Marc Gerothanas','Jay Issacson','Missy Dunn'
+];
+
+// These players' points are NEVER counted in standings (permanent subs only)
+const PERMANENT_SUBS = [];
+
 // ─── SPRING RENDER ────────────────────────────────────────────
 function renderSStandings() {
-  const st={};
-  state.spring.players.forEach(p=>st[p]={won:0,tot:0});
-  state.spring.matches.forEach(m=>{
-    if(!m.scores) return;
-    Object.entries(m.scores).forEach(([p,w])=>{if(!st[p])st[p]={won:0,tot:0};st[p].won+=w;});
-    if(m.totals) Object.entries(m.totals).forEach(([p,t])=>{if(st[p])st[p].tot+=t;});
+  // Build stats only for non-sub appearances
+  const st = {};
+  SPRING_PLAYERS.forEach(p => st[p] = {won:0, tot:0});
+
+  SPRING_MATCHES.forEach(m => {
+    const allPlayers = [...m.t1, ...m.t2];
+    allPlayers.forEach(p => {
+      // Skip if this player is a permanent sub OR was a sub in this specific match
+      if (PERMANENT_SUBS.includes(p)) return;
+      if (m.subs && m.subs.includes(p)) return;
+      if (!st[p]) st[p] = {won:0, tot:0};
+      const onT1 = m.t1.includes(p);
+      const myScore = onT1 ? m.s1 : m.s2;
+      const oppScore = onT1 ? m.s2 : m.s1;
+      const total = myScore + oppScore;
+      st[p].won += myScore;
+      st[p].tot += total;
+    });
   });
-  const ranked=state.spring.players.map(p=>({name:p,...(st[p]||{won:0,tot:0})})).sort((a,b)=>b.won-a.won||(b.tot&&a.tot?(b.won/b.tot)-(a.won/a.tot):0));
-  const medals=['🥇','🥈','🥉'];
-  const bodyEl=document.getElementById('sb-standings');
-  if(!ranked.length){bodyEl.innerHTML='<tr><td colspan="6"><div class="empty-state">Season starts Mar 31</div></td></tr>';['sb-upper','sb-lower'].forEach(id=>document.getElementById(id).innerHTML='<tr><td colspan="6"><div class="empty-state">Determined after Week 4</div></td></tr>');return;}
-  const renderRows=(players,id,offset=0)=>{
-    const el=document.getElementById(id);
-    if(!players.length){el.innerHTML='<tr><td colspan="6"><div class="empty-state">Determined after Week 4</div></td></tr>';return;}
-    el.innerHTML=players.map((p,i)=>{const eff=p.tot?Math.round(p.won/p.tot*100)+'%':'—';const gl=Math.max(0,p.tot-p.won);return `<tr><td class="rank">${medals[i+offset]||i+offset+1}</td><td class="player-name">${p.name}</td><td class="pts-s">${p.won}</td><td class="eff">${eff}</td><td>${p.won}</td><td>${gl}</td></tr>`;}).join('');
+
+  const ranked = SPRING_PLAYERS
+    .filter(p => !PERMANENT_SUBS.includes(p))
+    .map(p => ({name:p, ...st[p]}))
+    .sort((a,b) => {
+      const effA = a.tot ? a.won/a.tot : 0;
+      const effB = b.tot ? b.won/b.tot : 0;
+      return effB - effA || b.won - a.won;
+    });
+
+  const medals = ['🥇','🥈','🥉'];
+  const renderRows = (players, id) => {
+    const el = document.getElementById(id);
+    if (!players.length) { el.innerHTML='<tr><td colspan="6"><div class="empty-state">No data yet</div></td></tr>'; return; }
+    el.innerHTML = players.map((p,i) => {
+      const eff = p.tot ? (p.won/p.tot*100).toFixed(1)+'%' : '—';
+      const gl = Math.max(0, p.tot - p.won);
+      return `<tr><td class="rank">${medals[i]||i+1}</td><td class="player-name">${p.name}</td><td class="pts-s">${p.won}</td><td class="eff">${eff}</td><td>${p.won}</td><td>${gl}</td></tr>`;
+    }).join('');
   };
-  renderRows(ranked,'sb-standings');
-  if(ranked.length>=8){renderRows(ranked.slice(0,8),'sb-upper');renderRows(ranked.slice(8),'sb-lower');}
+
+  renderRows(ranked, 'sb-standings');
+  if (ranked.length >= 8) {
+    renderRows(ranked.slice(0,8), 'sb-upper');
+    renderRows(ranked.slice(8), 'sb-lower');
+  }
+}
+
+function renderSResults() {
+  const el = document.getElementById('sb-results');
+  if (!SPRING_MATCHES.length) { el.innerHTML='<div class="empty-state">No results yet</div>'; return; }
+
+  // Group by week → court+time
+  const weeks = {};
+  SPRING_MATCHES.forEach(m => {
+    const wk = m.week;
+    const slot = `${m.court} · ${m.time}`;
+    if (!weeks[wk]) weeks[wk] = {};
+    if (!weeks[wk][slot]) weeks[wk][slot] = [];
+    weeks[wk][slot].push(m);
+  });
+
+  const weekDates = {1:'Mar 31, 2026', 2:'Apr 7, 2026', 3:'Apr 14, 2026', 4:'Apr 21, 2026'};
+  let html = '';
+
+  Object.keys(weeks).sort().forEach(wk => {
+    html += `<div style="margin-bottom:24px">
+      <div class="sub-section-title" style="color:var(--spring);font-size:18px;margin-bottom:12px">Week ${wk} · ${weekDates[wk]||''}</div>`;
+
+    Object.entries(weeks[wk]).forEach(([slot, matches]) => {
+      const isC1 = slot.includes('Court 1');
+      const hdrColor = isC1 ? '#4CAF50' : '#FF7043';
+      const bgColor = isC1 ? 'rgba(27,94,32,0.08)' : 'rgba(191,54,12,0.08)';
+      html += `<div style="margin-bottom:12px">
+        <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:${hdrColor};background:${bgColor};padding:7px 14px;border-radius:8px 8px 0 0;border:1px solid ${hdrColor}30">${slot}</div>`;
+
+      matches.forEach((m, i) => {
+        const t1w = m.s1 > m.s2;
+        const t1Label = m.t1.map(p => m.subs&&m.subs.includes(p) ? `<span style="color:var(--muted);font-style:italic">${p} (sub)</span>` : `<span>${p}</span>`).join(' + ');
+        const t2Label = m.t2.map(p => m.subs&&m.subs.includes(p) ? `<span style="color:var(--muted);font-style:italic">${p} (sub)</span>` : `<span>${p}</span>`).join(' + ');
+        html += `<div class="match-card" style="border-radius:${i===matches.length-1?'0 0 8px 8px':'0'};border-top:none;margin-bottom:0">
+          <div class="match-header"><span class="match-date-label">Match ${i+1} of 3</span></div>
+          <div class="match-body">
+            <div class="team" style="font-size:13px">${t1Label}</div>
+            <div class="score-box">
+              <div class="${t1w?'score-win-s':''}"><span class="score-num">${m.s1}</span></div>
+              <span class="score-sep">–</span>
+              <div class="${!t1w?'score-win-s':''}"><span class="score-num">${m.s2}</span></div>
+            </div>
+            <div class="team right" style="font-size:13px">${t2Label}</div>
+          </div>
+        </div>`;
+      });
+      html += `</div>`;
+    });
+    html += `</div>`;
+  });
+
+  el.innerHTML = html;
 }
 
 function renderSPlayers() {
-  const el=document.getElementById('sb-players');
-  if(!state.spring.players.length){el.innerHTML='<div class="empty-state" style="grid-column:1/-1">No players added yet</div>';return;}
-  el.innerHTML=state.spring.players.map(p=>{
-    const ini=p.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
-    return `<div class="player-card sc"><div class="av">${ini}</div><div class="pname">${p}</div></div>`;
+  const el = document.getElementById('sb-players');
+  const st = {};
+  SPRING_PLAYERS.forEach(p => st[p] = {won:0, tot:0});
+  SPRING_MATCHES.forEach(m => {
+    [...m.t1,...m.t2].forEach(p => {
+      if (PERMANENT_SUBS.includes(p)) return;
+      if (m.subs && m.subs.includes(p)) return;
+      if (!st[p]) st[p] = {won:0, tot:0};
+      const onT1 = m.t1.includes(p);
+      st[p].won += onT1 ? m.s1 : m.s2;
+      st[p].tot += m.s1 + m.s2;
+    });
+  });
+  const display = SPRING_PLAYERS.filter(p => !PERMANENT_SUBS.includes(p));
+  if (!display.length) { el.innerHTML='<div class="empty-state" style="grid-column:1/-1">No players yet</div>'; return; }
+  el.innerHTML = display.map(p => {
+    const eff = st[p].tot ? (st[p].won/st[p].tot*100).toFixed(1)+'%' : '—';
+    const ini = p.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+    return `<div class="player-card sc"><div class="av">${ini}</div><div class="pname">${p}</div><div class="pstat">${st[p].won} won · ${eff}</div></div>`;
   }).join('');
 }
 
 // ─── RENDER ALL ───────────────────────────────────────────────
-function renderAll(){renderWStandings();renderWResults();renderWPlayers();renderSStandings();renderSPlayers();}
+function renderAll(){renderWStandings();renderWResults();renderWPlayers();renderSStandings();renderSResults();renderSPlayers();}
 
 // ─── INIT ─────────────────────────────────────────────────────
 load();
