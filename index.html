@@ -385,29 +385,6 @@ tbody tr:hover { background: var(--surface2); }
     .split-banner span { color: var(--muted); font-weight: 400; font-size: 12px; margin-left: 4px; }
   </style>
 
-  <!-- WEEK 2 -->
-  <div class="fixture-week">
-    <div class="fixture-week-hdr">Week 2 · Apr 7, 2026</div>
-    <div class="fixture-courts">
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c1"><span class="fixture-dot fd-c1"></span>Court 1 · 5:30 PM</div>
-        <div class="fixture-mini"><div class="fixture-player">Jay Issacson</div><div class="fixture-player">Patrick Grant</div><div class="fixture-player">JD Maloney</div><div class="fixture-player">Cliff Tribus</div></div>
-      </div>
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 5:30 PM</div>
-        <div class="fixture-mini"><div class="fixture-player">Marc Gerothanas</div><div class="fixture-player">Will Wait</div><div class="fixture-player">Stacy Reid</div><div class="fixture-player">Eric Engen</div></div>
-      </div>
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c1"><span class="fixture-dot fd-c1"></span>Court 1 · 7:00 PM</div>
-        <div class="fixture-mini"><div class="fixture-player">Kathleen McNeil</div><div class="fixture-player">Felipe Quaassdorff</div><div class="fixture-player">Missy Dunn</div><div class="fixture-player">Shelby/Jack</div></div>
-      </div>
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 7:00 PM</div>
-        <div class="fixture-mini"><div class="fixture-player">Josh Pelletter</div><div class="fixture-player">Tammy Krez</div><div class="fixture-player">George Frese</div><div class="fixture-player">Robb Warren</div></div>
-      </div>
-    </div>
-  </div>
-
   <!-- WEEK 3 -->
   <div class="fixture-week">
     <div class="fixture-week-hdr">Week 3 · Apr 14, 2026</div>
@@ -597,6 +574,38 @@ const SPRING_MATCHES = [
   { date:'2026-03-31', week:1, court:'Court 2', time:'7:00 PM',
     t1:['Felipe Quaassdorff','Tammy Krez'], t2:['Josh Pelletter','JD Maloney'], s1:4, s2:4,
     subs:[] },
+
+  // ── Week 2 · Court 1 · 5:30 PM — Jay, Patrick, JD, Cliff all own slots ──
+  { date:'2026-04-07', week:2, court:'Court 1', time:'5:30 PM',
+    t1:['Jay Issacson','Patrick Grant'], t2:['JD Maloney','Cliff Tribus'], s1:0, s2:8, subs:[] },
+  { date:'2026-04-07', week:2, court:'Court 1', time:'5:30 PM',
+    t1:['Jay Issacson','JD Maloney'], t2:['Patrick Grant','Cliff Tribus'], s1:3, s2:5, subs:[] },
+  { date:'2026-04-07', week:2, court:'Court 1', time:'5:30 PM',
+    t1:['Jay Issacson','Cliff Tribus'], t2:['Patrick Grant','JD Maloney'], s1:4, s2:4, subs:[] },
+
+  // ── Week 2 · Court 1 · 7:00 PM — Missy & Eric own slots · Will Wait subbed by Hugh · Stacy Reid subbing Felipe ──
+  { date:'2026-04-07', week:2, court:'Court 1', time:'7:00 PM',
+    t1:['Missy Dunn','Hugh'], t2:['Stacy Reid','Eric Engen'], s1:5, s2:3, subs:['Hugh','Stacy Reid'] },
+  { date:'2026-04-07', week:2, court:'Court 1', time:'7:00 PM',
+    t1:['Missy Dunn','Stacy Reid'], t2:['Hugh','Eric Engen'], s1:3, s2:5, subs:['Hugh','Stacy Reid'] },
+  { date:'2026-04-07', week:2, court:'Court 1', time:'7:00 PM',
+    t1:['Missy Dunn','Eric Engen'], t2:['Hugh','Stacy Reid'], s1:2, s2:6, subs:['Hugh','Stacy Reid'] },
+
+  // ── Week 2 · Court 2 · 5:30 PM — Kathleen, Felipe, Marc, Shelby/Jack own slots ──
+  { date:'2026-04-07', week:2, court:'Court 2', time:'5:30 PM',
+    t1:['Kathleen McNeil','Felipe Quaassdorff'], t2:['Marc Gerothanas','Shelby/Jack'], s1:2, s2:6, subs:[] },
+  { date:'2026-04-07', week:2, court:'Court 2', time:'5:30 PM',
+    t1:['Kathleen McNeil','Marc Gerothanas'], t2:['Felipe Quaassdorff','Shelby/Jack'], s1:7, s2:1, subs:[] },
+  { date:'2026-04-07', week:2, court:'Court 2', time:'5:30 PM',
+    t1:['Kathleen McNeil','Shelby/Jack'], t2:['Felipe Quaassdorff','Marc Gerothanas'], s1:2, s2:6, subs:[] },
+
+  // ── Week 2 · Court 2 · 7:00 PM — Josh, Tammy, George own slots · Robb Warren subbing ──
+  { date:'2026-04-07', week:2, court:'Court 2', time:'7:00 PM',
+    t1:['Josh Pelletter','Tammy Krez'], t2:['George Frese','Robb Warren'], s1:6, s2:2, subs:['Robb Warren'] },
+  { date:'2026-04-07', week:2, court:'Court 2', time:'7:00 PM',
+    t1:['Josh Pelletter','George Frese'], t2:['Tammy Krez','Robb Warren'], s1:6, s2:2, subs:['Robb Warren'] },
+  { date:'2026-04-07', week:2, court:'Court 2', time:'7:00 PM',
+    t1:['Josh Pelletter','Robb Warren'], t2:['Tammy Krez','George Frese'], s1:4, s2:4, subs:['Robb Warren'] },
 ];
 
 // Players whose points COUNT in standings (not subs)
