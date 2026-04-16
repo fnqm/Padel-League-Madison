@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -385,29 +384,6 @@ tbody tr:hover { background: var(--surface2); }
     .split-banner span { color: var(--muted); font-weight: 400; font-size: 12px; margin-left: 4px; }
   </style>
 
-  <!-- WEEK 3 -->
-  <div class="fixture-week">
-    <div class="fixture-week-hdr">Week 3 · Apr 14, 2026</div>
-    <div class="fixture-courts">
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c1"><span class="fixture-dot fd-c1"></span>Court 1 · 5:30 PM</div>
-        <div class="fixture-mini"><div class="fixture-player">George Frese</div><div class="fixture-player">JD Maloney</div><div class="fixture-player">Kathleen McNeil</div><div class="fixture-player">Stacy Reid</div></div>
-      </div>
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 5:30 PM</div>
-        <div class="fixture-mini"><div class="fixture-player">Robb Warren</div><div class="fixture-player">Marc Gerothanas</div><div class="fixture-player">Felipe Quaassdorff</div><div class="fixture-player">Patrick Grant</div></div>
-      </div>
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c1"><span class="fixture-dot fd-c1"></span>Court 1 · 7:00 PM</div>
-        <div class="fixture-mini"><div class="fixture-player">Eric Engen</div><div class="fixture-player">Jay Issacson</div><div class="fixture-player">Shelby/Jack</div><div class="fixture-player">Tammy Krez</div></div>
-      </div>
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 7:00 PM</div>
-        <div class="fixture-mini"><div class="fixture-player">Missy Dunn</div><div class="fixture-player">Will Wait</div><div class="fixture-player">Josh Pelletter</div><div class="fixture-player">Cliff Tribus</div></div>
-      </div>
-    </div>
-  </div>
-
   <!-- WEEK 4 -->
   <div class="fixture-week">
     <div class="fixture-week-hdr">Week 4 · Apr 21, 2026</div>
@@ -606,6 +582,22 @@ const SPRING_MATCHES = [
     t1:['Josh Pelletter','George Frese'], t2:['Tammy Krez','Robb Warren'], s1:6, s2:2, subs:['Robb Warren'] },
   { date:'2026-04-07', week:2, court:'Court 2', time:'7:00 PM',
     t1:['Josh Pelletter','Robb Warren'], t2:['Tammy Krez','George Frese'], s1:4, s2:4, subs:['Robb Warren'] },
+
+  // ── Week 3 · Wednesday makeup · Court 1 — all own slots ──
+  { date:'2026-04-16', week:3, court:'Court 1', time:'Wednesday',
+    t1:['George Frese','Tammy Krez'], t2:['Eric Engen','Felipe Quaassdorff'], s1:5, s2:3, subs:[] },
+  { date:'2026-04-16', week:3, court:'Court 1', time:'Wednesday',
+    t1:['George Frese','Eric Engen'], t2:['Tammy Krez','Felipe Quaassdorff'], s1:2, s2:6, subs:[] },
+  { date:'2026-04-16', week:3, court:'Court 1', time:'Wednesday',
+    t1:['George Frese','Felipe Quaassdorff'], t2:['Tammy Krez','Eric Engen'], s1:5, s2:3, subs:[] },
+
+  // ── Week 3 · Wednesday makeup · Court 2 — all own slots ──
+  { date:'2026-04-16', week:3, court:'Court 2', time:'Wednesday',
+    t1:['Cliff Tribus','Marc Gerothanas'], t2:['Missy Dunn','Patrick Grant'], s1:6, s2:2, subs:[] },
+  { date:'2026-04-16', week:3, court:'Court 2', time:'Wednesday',
+    t1:['Cliff Tribus','Missy Dunn'], t2:['Marc Gerothanas','Patrick Grant'], s1:4, s2:4, subs:[] },
+  { date:'2026-04-16', week:3, court:'Court 2', time:'Wednesday',
+    t1:['Cliff Tribus','Patrick Grant'], t2:['Marc Gerothanas','Missy Dunn'], s1:4, s2:4, subs:[] },
 ];
 
 // Players whose points COUNT in standings (not subs)
