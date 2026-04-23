@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -338,22 +339,25 @@ tbody tr:hover { background: var(--surface2); }
 
 <section id="s-standings" class="section">
   <div class="section-title spring-title">🏆 Standings — Spring 2026</div>
-  <div class="phase-label">📊 Regular Phase — All 16 Players (Weeks 1–4)</div>
+
+  <div class="phase-label">🔥 Upper League — Split Phase (Fresh Start)</div>
+  <div class="division-banner db-upper"><div class="di">🔥</div><div><strong>Upper League</strong><span>Marc Gerothanas · Will Wait · Cliff Tribus · Josh Pelletter · JD Maloney · Tammy Krez · Felipe Quaassdorff · Patrick Grant</span></div></div>
   <div class="table-wrap"><table>
     <thead><tr><th>#</th><th>Player</th><th>Games Won</th><th>Eff%</th><th>GW</th><th>GL</th></tr></thead>
-    <tbody id="sb-standings"><tr><td colspan="6"><div class="empty-state">Season starts Mar 31</div></td></tr></tbody>
+    <tbody id="sb-upper"><tr><td colspan="6"><div class="empty-state">Split phase starting soon — scores reset</div></td></tr></tbody>
   </table></div>
-  <div class="phase-label" style="margin-top:28px">🔥 Upper League — Top 8 (Weeks 5–8)</div>
-  <div class="division-banner db-upper"><div class="di">🔥</div><div><strong>Upper League</strong><span>Top 8 players after Regular Phase</span></div></div>
+
+  <div class="phase-label" style="margin-top:28px">🎾 Lower League — Split Phase (Fresh Start)</div>
+  <div class="division-banner db-lower"><div class="di">🎾</div><div><strong>Lower League</strong><span>George Frese · Missy Dunn · Eric Engen · Kathleen McNeil · Robb Warren · Stacy Reid · Shelby/Jack · Jay Issacson</span></div></div>
   <div class="table-wrap"><table>
     <thead><tr><th>#</th><th>Player</th><th>Games Won</th><th>Eff%</th><th>GW</th><th>GL</th></tr></thead>
-    <tbody id="sb-upper"><tr><td colspan="6"><div class="empty-state">Determined after Week 4</div></td></tr></tbody>
+    <tbody id="sb-lower"><tr><td colspan="6"><div class="empty-state">Split phase starting soon — scores reset</div></td></tr></tbody>
   </table></div>
-  <div class="phase-label">🎾 Lower League — Bottom 8 (Weeks 5–8)</div>
-  <div class="division-banner db-lower"><div class="di">🎾</div><div><strong>Lower League</strong><span>Bottom 8 players after Regular Phase</span></div></div>
+
+  <div class="phase-label" style="margin-top:32px">📊 Regular Season Final Standings — Weeks 1–4</div>
   <div class="table-wrap"><table>
     <thead><tr><th>#</th><th>Player</th><th>Games Won</th><th>Eff%</th><th>GW</th><th>GL</th></tr></thead>
-    <tbody id="sb-lower"><tr><td colspan="6"><div class="empty-state">Determined after Week 4</div></td></tr></tbody>
+    <tbody id="sb-standings"><tr><td colspan="6"><div class="empty-state">Loading...</div></td></tr></tbody>
   </table></div>
 </section>
 
@@ -384,30 +388,136 @@ tbody tr:hover { background: var(--surface2); }
     .split-banner span { color: var(--muted); font-weight: 400; font-size: 12px; margin-left: 4px; }
   </style>
 
-  <!-- WEEK 4 -->
+  <div class="split-banner">🔥 Split Phase is here! <span>— Upper League & Lower League now underway · Tuesdays through May 19</span></div>
+
+  <!-- WEEK 1 -->
   <div class="fixture-week">
-    <div class="fixture-week-hdr">Week 4 · Apr 21, 2026</div>
+    <div class="fixture-week-hdr">Week 1 · May 5, 2026</div>
     <div class="fixture-courts">
       <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c1"><span class="fixture-dot fd-c1"></span>Court 1 · 5:30 PM</div>
-        <div class="fixture-mini"><div class="fixture-player">Eric Engen</div><div class="fixture-player">George Frese</div><div class="fixture-player">Felipe Quaassdorff</div><div class="fixture-player">Cliff Tribus</div></div>
+        <div class="fixture-court-hdr fc-c1"><span class="fixture-dot fd-c1"></span>Court 1 · 5:30 PM · 🔥 Upper League</div>
+        <div class="fixture-mini">
+          <div class="fixture-player">Will Wait</div>
+          <div class="fixture-player">Cliff Tribus</div>
+          <div class="fixture-player">Tammy Krez</div>
+          <div class="fixture-player">Felipe Quaassdorff</div>
+        </div>
       </div>
       <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 5:30 PM</div>
-        <div class="fixture-mini"><div class="fixture-player">Kathleen McNeil</div><div class="fixture-player">Will Wait</div><div class="fixture-player">Robb Warren</div><div class="fixture-player">Jay Issacson</div></div>
+        <div class="fixture-court-hdr fc-c1"><span class="fixture-dot fd-c1"></span>Court 1 · 7:00 PM · 🔥 Upper League</div>
+        <div class="fixture-mini">
+          <div class="fixture-player">Marc Gerothanas</div>
+          <div class="fixture-player">Josh Pelletter</div>
+          <div class="fixture-player">JD Maloney</div>
+          <div class="fixture-player">Patrick Grant</div>
+        </div>
       </div>
       <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c1"><span class="fixture-dot fd-c1"></span>Court 1 · 7:00 PM</div>
-        <div class="fixture-mini"><div class="fixture-player">Stacy Reid</div><div class="fixture-player">Tammy Krez</div><div class="fixture-player">Patrick Grant</div><div class="fixture-player">Missy Dunn</div></div>
+        <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 5:30 PM · 🎾 Lower League</div>
+        <div class="fixture-mini">
+          <div class="fixture-player">Missy Dunn</div>
+          <div class="fixture-player">Eric Engen</div>
+          <div class="fixture-player">Stacy Reid</div>
+          <div class="fixture-player">Shelby/Jack</div>
+        </div>
       </div>
       <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 7:00 PM</div>
-        <div class="fixture-mini"><div class="fixture-player">JD Maloney</div><div class="fixture-player">Shelby/Jack</div><div class="fixture-player">Marc Gerothanas</div><div class="fixture-player">Josh Pelletter</div></div>
+        <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 7:00 PM · 🎾 Lower League</div>
+        <div class="fixture-mini">
+          <div class="fixture-player">George Frese</div>
+          <div class="fixture-player">Kathleen McNeil</div>
+          <div class="fixture-player">Robb Warren</div>
+          <div class="fixture-player">Jay Issacson</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="split-banner">🔀 Split Phase starts Apr 28 <span>— Top 8 → Upper League · Bottom 8 → Lower League · Both play simultaneously each Tuesday through May 19</span></div>
+  <!-- WEEK 2 -->
+  <div class="fixture-week">
+    <div class="fixture-week-hdr">Week 2 · May 12, 2026</div>
+    <div class="fixture-courts">
+      <div class="fixture-court">
+        <div class="fixture-court-hdr fc-c1"><span class="fixture-dot fd-c1"></span>Court 1 · 5:30 PM · 🎾 Lower League</div>
+        <div class="fixture-mini">
+          <div class="fixture-player">George Frese</div>
+          <div class="fixture-player">Eric Engen</div>
+          <div class="fixture-player">Shelby/Jack</div>
+          <div class="fixture-player">Jay Issacson</div>
+        </div>
+      </div>
+      <div class="fixture-court">
+        <div class="fixture-court-hdr fc-c1"><span class="fixture-dot fd-c1"></span>Court 1 · 7:00 PM · 🎾 Lower League</div>
+        <div class="fixture-mini">
+          <div class="fixture-player">Missy Dunn</div>
+          <div class="fixture-player">Kathleen McNeil</div>
+          <div class="fixture-player">Robb Warren</div>
+          <div class="fixture-player">Stacy Reid</div>
+        </div>
+      </div>
+      <div class="fixture-court">
+        <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 5:30 PM · 🔥 Upper League</div>
+        <div class="fixture-mini">
+          <div class="fixture-player">Marc Gerothanas</div>
+          <div class="fixture-player">Cliff Tribus</div>
+          <div class="fixture-player">Felipe Quaassdorff</div>
+          <div class="fixture-player">Patrick Grant</div>
+        </div>
+      </div>
+      <div class="fixture-court">
+        <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 7:00 PM · 🔥 Upper League</div>
+        <div class="fixture-mini">
+          <div class="fixture-player">Will Wait</div>
+          <div class="fixture-player">Josh Pelletter</div>
+          <div class="fixture-player">JD Maloney</div>
+          <div class="fixture-player">Tammy Krez</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEK 3 -->
+  <div class="fixture-week">
+    <div class="fixture-week-hdr">Week 3 · May 19, 2026 🏆 Final Week</div>
+    <div class="fixture-courts">
+      <div class="fixture-court">
+        <div class="fixture-court-hdr fc-c1"><span class="fixture-dot fd-c1"></span>Court 1 · 5:30 PM · 🔥 Upper League</div>
+        <div class="fixture-mini">
+          <div class="fixture-player">Marc Gerothanas</div>
+          <div class="fixture-player">Will Wait</div>
+          <div class="fixture-player">Cliff Tribus</div>
+          <div class="fixture-player">Josh Pelletter</div>
+        </div>
+      </div>
+      <div class="fixture-court">
+        <div class="fixture-court-hdr fc-c1"><span class="fixture-dot fd-c1"></span>Court 1 · 7:00 PM · 🔥 Upper League</div>
+        <div class="fixture-mini">
+          <div class="fixture-player">JD Maloney</div>
+          <div class="fixture-player">Tammy Krez</div>
+          <div class="fixture-player">Felipe Quaassdorff</div>
+          <div class="fixture-player">Patrick Grant</div>
+        </div>
+      </div>
+      <div class="fixture-court">
+        <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 5:30 PM · 🎾 Lower League</div>
+        <div class="fixture-mini">
+          <div class="fixture-player">George Frese</div>
+          <div class="fixture-player">Missy Dunn</div>
+          <div class="fixture-player">Eric Engen</div>
+          <div class="fixture-player">Kathleen McNeil</div>
+        </div>
+      </div>
+      <div class="fixture-court">
+        <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 7:00 PM · 🎾 Lower League</div>
+        <div class="fixture-mini">
+          <div class="fixture-player">Robb Warren</div>
+          <div class="fixture-player">Stacy Reid</div>
+          <div class="fixture-player">Shelby/Jack</div>
+          <div class="fixture-player">Jay Issacson</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </section>
 
@@ -598,6 +708,38 @@ const SPRING_MATCHES = [
     t1:['Cliff Tribus','Missy Dunn'], t2:['Marc Gerothanas','Patrick Grant'], s1:4, s2:4, subs:[] },
   { date:'2026-04-16', week:3, court:'Court 2', time:'Wednesday',
     t1:['Cliff Tribus','Patrick Grant'], t2:['Marc Gerothanas','Missy Dunn'], s1:4, s2:4, subs:[] },
+
+  // ── Week 4 · Court 1 · 5:30 PM — all own slots ──
+  { date:'2026-04-21', week:4, court:'Court 1', time:'5:30 PM',
+    t1:['Eric Engen','George Frese'], t2:['Felipe Quaassdorff','Marc Gerothanas'], s1:3, s2:5, subs:[] },
+  { date:'2026-04-21', week:4, court:'Court 1', time:'5:30 PM',
+    t1:['Eric Engen','Felipe Quaassdorff'], t2:['George Frese','Marc Gerothanas'], s1:5, s2:3, subs:[] },
+  { date:'2026-04-21', week:4, court:'Court 1', time:'5:30 PM',
+    t1:['Eric Engen','Marc Gerothanas'], t2:['George Frese','Felipe Quaassdorff'], s1:5, s2:3, subs:[] },
+
+  // ── Week 4 · Court 2 · 5:30 PM — Robb Warren (Sub Missy) & Jay Issacson (Sub JH) excluded ──
+  { date:'2026-04-21', week:4, court:'Court 2', time:'5:30 PM',
+    t1:['Kathleen McNeil','Will Wait'], t2:['Robb Warren','Jay Issacson'], s1:4, s2:4, subs:['Robb Warren','Jay Issacson'] },
+  { date:'2026-04-21', week:4, court:'Court 2', time:'5:30 PM',
+    t1:['Kathleen McNeil','Robb Warren'], t2:['Will Wait','Jay Issacson'], s1:0, s2:8, subs:['Robb Warren','Jay Issacson'] },
+  { date:'2026-04-21', week:4, court:'Court 2', time:'5:30 PM',
+    t1:['Kathleen McNeil','Jay Issacson'], t2:['Will Wait','Robb Warren'], s1:4, s2:4, subs:['Robb Warren','Jay Issacson'] },
+
+  // ── Week 4 · Court 1 · 7:00 PM — Stacy Reid (Sub F) & Tammy Krez (Sub Kathleen) excluded ──
+  { date:'2026-04-21', week:4, court:'Court 1', time:'7:00 PM',
+    t1:['Stacy Reid','Tammy Krez'], t2:['Patrick Grant','Missy Dunn'], s1:4, s2:4, subs:['Stacy Reid','Tammy Krez'] },
+  { date:'2026-04-21', week:4, court:'Court 1', time:'7:00 PM',
+    t1:['Stacy Reid','Patrick Grant'], t2:['Tammy Krez','Missy Dunn'], s1:6, s2:2, subs:['Stacy Reid','Tammy Krez'] },
+  { date:'2026-04-21', week:4, court:'Court 1', time:'7:00 PM',
+    t1:['Stacy Reid','Missy Dunn'], t2:['Tammy Krez','Patrick Grant'], s1:5, s2:3, subs:['Stacy Reid','Tammy Krez'] },
+
+  // ── Week 4 · Court 2 · 7:00 PM — Will Wait subbing for Cliff, both excluded ──
+  { date:'2026-04-21', week:4, court:'Court 2', time:'7:00 PM',
+    t1:['JD Maloney','Shelby/Jack'], t2:['Will Wait','Josh Pelletter'], s1:2, s2:6, subs:['Will Wait','Cliff Tribus'] },
+  { date:'2026-04-21', week:4, court:'Court 2', time:'7:00 PM',
+    t1:['JD Maloney','Will Wait'], t2:['Shelby/Jack','Josh Pelletter'], s1:7, s2:1, subs:['Will Wait','Cliff Tribus'] },
+  { date:'2026-04-21', week:4, court:'Court 2', time:'7:00 PM',
+    t1:['JD Maloney','Josh Pelletter'], t2:['Shelby/Jack','Will Wait'], s1:6, s2:2, subs:['Will Wait','Cliff Tribus'] },
 ];
 
 // Players whose points COUNT in standings (not subs)
@@ -612,52 +754,71 @@ const SPRING_PLAYERS = [
 const PERMANENT_SUBS = [];
 
 // ─── SPRING RENDER ────────────────────────────────────────────
-function renderSStandings() {
-  // Build stats only for non-sub appearances
-  const st = {};
-  SPRING_PLAYERS.forEach(p => st[p] = {won:0, tot:0});
+// Split phase rosters
+const UPPER_LEAGUE = ['Marc Gerothanas','Will Wait','Cliff Tribus','Josh Pelletter','JD Maloney','Tammy Krez','Felipe Quaassdorff','Patrick Grant'];
+const LOWER_LEAGUE = ['George Frese','Missy Dunn','Eric Engen','Kathleen McNeil','Robb Warren','Stacy Reid','Shelby/Jack','Jay Issacson'];
+const SPLIT_WEEK_START = 5; // weeks >= 5 count for split phase standings
 
-  SPRING_MATCHES.forEach(m => {
-    const allPlayers = [...m.t1, ...m.t2];
-    allPlayers.forEach(p => {
-      // Skip if this player is a permanent sub OR was a sub in this specific match
-      if (PERMANENT_SUBS.includes(p)) return;
+function renderSStandings() {
+  const medals = ['🥇','🥈','🥉'];
+
+  // ── Regular season stats (weeks 1–4) ──
+  const regSt = {};
+  SPRING_MATCHES.filter(m => m.week <= 4).forEach(m => {
+    [...m.t1,...m.t2].forEach(p => {
       if (m.subs && m.subs.includes(p)) return;
-      if (!st[p]) st[p] = {won:0, tot:0};
+      if (!regSt[p]) regSt[p] = {won:0, tot:0};
       const onT1 = m.t1.includes(p);
-      const myScore = onT1 ? m.s1 : m.s2;
-      const oppScore = onT1 ? m.s2 : m.s1;
-      const total = myScore + oppScore;
-      st[p].won += myScore;
-      st[p].tot += total;
+      regSt[p].won += onT1 ? m.s1 : m.s2;
+      regSt[p].tot += m.s1 + m.s2;
     });
   });
 
-  const ranked = SPRING_PLAYERS
-    .filter(p => !PERMANENT_SUBS.includes(p))
-    .map(p => ({name:p, ...st[p]}))
-    .sort((a,b) => {
-      const effA = a.tot ? a.won/a.tot : 0;
-      const effB = b.tot ? b.won/b.tot : 0;
-      return effB - effA || b.won - a.won;
+  // ── Split phase stats (weeks 5+) — fresh scores ──
+  const splitSt = {};
+  SPRING_MATCHES.filter(m => m.week >= SPLIT_WEEK_START).forEach(m => {
+    [...m.t1,...m.t2].forEach(p => {
+      if (m.subs && m.subs.includes(p)) return;
+      if (!splitSt[p]) splitSt[p] = {won:0, tot:0};
+      const onT1 = m.t1.includes(p);
+      splitSt[p].won += onT1 ? m.s1 : m.s2;
+      splitSt[p].tot += m.s1 + m.s2;
     });
+  });
 
-  const medals = ['🥇','🥈','🥉'];
-  const renderRows = (players, id) => {
+  const renderRows = (players, id, stats) => {
     const el = document.getElementById(id);
     if (!players.length) { el.innerHTML='<tr><td colspan="6"><div class="empty-state">No data yet</div></td></tr>'; return; }
-    el.innerHTML = players.map((p,i) => {
+    const ranked = players
+      .map(p => ({name:p, ...(stats[p]||{won:0,tot:0})}))
+      .sort((a,b) => { const ea=a.tot?a.won/a.tot:0, eb=b.tot?b.won/b.tot:0; return eb-ea||b.won-a.won; });
+    const hasSplitData = ranked.some(p => p.tot > 0);
+    if (!hasSplitData) {
+      el.innerHTML='<tr><td colspan="6"><div class="empty-state">Split phase starting soon — scores reset ✨</div></td></tr>'; return;
+    }
+    el.innerHTML = ranked.map((p,i) => {
       const eff = p.tot ? (p.won/p.tot*100).toFixed(1)+'%' : '—';
       const gl = Math.max(0, p.tot - p.won);
       return `<tr><td class="rank">${medals[i]||i+1}</td><td class="player-name">${p.name}</td><td class="pts-s">${p.won}</td><td class="eff">${eff}</td><td>${p.won}</td><td>${gl}</td></tr>`;
     }).join('');
   };
 
-  renderRows(ranked, 'sb-standings');
-  if (ranked.length >= 8) {
-    renderRows(ranked.slice(0,8), 'sb-upper');
-    renderRows(ranked.slice(8), 'sb-lower');
-  }
+  // Render split phase leagues (fresh scores)
+  renderRows(UPPER_LEAGUE, 'sb-upper', splitSt);
+  renderRows(LOWER_LEAGUE, 'sb-lower', splitSt);
+
+  // Render regular season final standings (all players, reg season only)
+  const allPlayers = [...UPPER_LEAGUE, ...LOWER_LEAGUE];
+  const regRanked = allPlayers
+    .map(p => ({name:p, ...(regSt[p]||{won:0,tot:0})}))
+    .sort((a,b) => { const ea=a.tot?a.won/a.tot:0, eb=b.tot?b.won/b.tot:0; return eb-ea||b.won-a.won; });
+  const el = document.getElementById('sb-standings');
+  el.innerHTML = regRanked.map((p,i) => {
+    const eff = p.tot ? (p.won/p.tot*100).toFixed(1)+'%' : '—';
+    const gl = Math.max(0, p.tot - p.won);
+    const league = UPPER_LEAGUE.includes(p.name) ? '<span style="font-size:10px;color:var(--spring);font-family:var(--font-mono,monospace)">🔥 Upper</span>' : '<span style="font-size:10px;color:var(--accent2);font-family:var(--font-mono,monospace)">🎾 Lower</span>';
+    return `<tr><td class="rank">${medals[i]||i+1}</td><td class="player-name">${p.name} ${league}</td><td class="pts-s">${p.won}</td><td class="eff">${eff}</td><td>${p.won}</td><td>${gl}</td></tr>`;
+  }).join('');
 }
 
 function renderSResults() {
