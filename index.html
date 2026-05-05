@@ -347,7 +347,7 @@ tbody tr:hover { background: var(--surface2); }
   </table></div>
 
   <div class="phase-label" style="margin-top:28px">🎾 Lower League — Split Phase (Fresh Start)</div>
-  <div class="division-banner db-lower"><div class="di">🎾</div><div><strong>Lower League</strong><span>George Frese · Missy Dunn · Eric Engen · Kathleen McNeil · Robb Warren · Stacy Reid · Shelby/Jack · Jay Issacson</span></div></div>
+  <div class="division-banner db-lower"><div class="di">🎾</div><div><strong>Lower League</strong><span>George Frese · Missy Dunn · Eric Engen · Kathleen McNeil · Robb Warren · Tim O'Brien · Shelby/Jack · Jay Issacson</span></div></div>
   <div class="table-wrap"><table>
     <thead><tr><th>#</th><th>Player</th><th>Games Won</th><th>Eff%</th><th>GW</th><th>GL</th></tr></thead>
     <tbody id="sb-lower"><tr><td colspan="6"><div class="empty-state">Split phase starting soon — scores reset</div></td></tr></tbody>
@@ -406,8 +406,8 @@ tbody tr:hover { background: var(--surface2); }
         <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 5:30 PM · 🎾 Lower League</div>
         <div class="fixture-mini">
           <div class="fixture-player">Missy Dunn</div>
-          <div class="fixture-player">Eric Engen</div>
-          <div class="fixture-player">Stacy Reid</div>
+          <div class="fixture-player">Robb Warren</div>
+          <div class="fixture-player">Tim O'Brien</div>
           <div class="fixture-player">Shelby/Jack</div>
         </div>
       </div>
@@ -423,10 +423,10 @@ tbody tr:hover { background: var(--surface2); }
       <div class="fixture-court">
         <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 7:00 PM · 🎾 Lower League</div>
         <div class="fixture-mini">
-          <div class="fixture-player">George Frese</div>
-          <div class="fixture-player">Kathleen McNeil</div>
-          <div class="fixture-player">Robb Warren</div>
-          <div class="fixture-player">Jay Issacson</div>
+          <div class="fixture-player" style="color:var(--muted);font-style:italic">George Frese — not available</div>
+          <div class="fixture-player" style="color:var(--muted);font-style:italic">Eric Engen — not available</div>
+          <div class="fixture-player" style="color:var(--muted);font-style:italic">Kathleen McNeil — not available</div>
+          <div class="fixture-player" style="color:var(--muted);font-style:italic">Jay Issacson — not available</div>
         </div>
       </div>
     </div>
@@ -460,7 +460,7 @@ tbody tr:hover { background: var(--surface2); }
           <div class="fixture-player">Missy Dunn</div>
           <div class="fixture-player">Kathleen McNeil</div>
           <div class="fixture-player">Robb Warren</div>
-          <div class="fixture-player">Stacy Reid</div>
+          <div class="fixture-player">Tim O'Brien</div>
         </div>
       </div>
       <div class="fixture-court">
@@ -510,7 +510,7 @@ tbody tr:hover { background: var(--surface2); }
         <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 7:00 PM · 🎾 Lower League</div>
         <div class="fixture-mini">
           <div class="fixture-player">Robb Warren</div>
-          <div class="fixture-player">Stacy Reid</div>
+          <div class="fixture-player">Tim O'Brien</div>
           <div class="fixture-player">Shelby/Jack</div>
           <div class="fixture-player">Jay Issacson</div>
         </div>
@@ -618,13 +618,13 @@ function renderWPlayers() {
 const SPRING_MATCHES = [
   // ── Week 1 · Court 1 · 7:00 PM — Robb Warren's OWN slot, points COUNT ──
   { date:'2026-03-31', week:1, court:'Court 1', time:'7:00 PM',
-    t1:['Robb Warren','Shelby/Jack'], t2:['Stacy Reid','Cliff Tribus'], s1:2, s2:6,
+    t1:['Robb Warren','Shelby/Jack'], t2:["Tim O'Brien",'Cliff Tribus'], s1:2, s2:6,
     subs:[] },
   { date:'2026-03-31', week:1, court:'Court 1', time:'7:00 PM',
-    t1:['Robb Warren','Stacy Reid'], t2:['Shelby/Jack','Cliff Tribus'], s1:5, s2:3,
+    t1:['Robb Warren',"Tim O'Brien"], t2:['Shelby/Jack','Cliff Tribus'], s1:5, s2:3,
     subs:[] },
   { date:'2026-03-31', week:1, court:'Court 1', time:'7:00 PM',
-    t1:['Robb Warren','Cliff Tribus'], t2:['Shelby/Jack','Stacy Reid'], s1:6, s2:2,
+    t1:['Robb Warren','Cliff Tribus'], t2:['Shelby/Jack',"Tim O'Brien"], s1:6, s2:2,
     subs:[] },
 
   // ── Week 1 · Court 1 · 5:30 PM — Robb subbing Missy's slot, Robb's points EXCLUDED ──
@@ -668,13 +668,13 @@ const SPRING_MATCHES = [
   { date:'2026-04-07', week:2, court:'Court 1', time:'5:30 PM',
     t1:['Jay Issacson','Cliff Tribus'], t2:['Patrick Grant','JD Maloney'], s1:4, s2:4, subs:[] },
 
-  // ── Week 2 · Court 1 · 7:00 PM — Missy & Eric own slots · Will Wait subbed by Hugh · Stacy Reid subbing Felipe ──
+  // ── Week 2 · Court 1 · 7:00 PM — Missy & Eric own slots · Will Wait subbed by Hugh · Tim O'Brien subbing Felipe ──
   { date:'2026-04-07', week:2, court:'Court 1', time:'7:00 PM',
-    t1:['Missy Dunn','Hugh'], t2:['Stacy Reid','Eric Engen'], s1:5, s2:3, subs:['Hugh','Stacy Reid'] },
+    t1:['Missy Dunn','Hugh'], t2:["Tim O'Brien",'Eric Engen'], s1:5, s2:3, subs:['Hugh',"Tim O'Brien"] },
   { date:'2026-04-07', week:2, court:'Court 1', time:'7:00 PM',
-    t1:['Missy Dunn','Stacy Reid'], t2:['Hugh','Eric Engen'], s1:3, s2:5, subs:['Hugh','Stacy Reid'] },
+    t1:['Missy Dunn',"Tim O'Brien"], t2:['Hugh','Eric Engen'], s1:3, s2:5, subs:['Hugh',"Tim O'Brien"] },
   { date:'2026-04-07', week:2, court:'Court 1', time:'7:00 PM',
-    t1:['Missy Dunn','Eric Engen'], t2:['Hugh','Stacy Reid'], s1:2, s2:6, subs:['Hugh','Stacy Reid'] },
+    t1:['Missy Dunn','Eric Engen'], t2:['Hugh',"Tim O'Brien"], s1:2, s2:6, subs:['Hugh',"Tim O'Brien"] },
 
   // ── Week 2 · Court 2 · 5:30 PM — Kathleen, Felipe, Marc, Shelby/Jack own slots ──
   { date:'2026-04-07', week:2, court:'Court 2', time:'5:30 PM',
@@ -724,13 +724,13 @@ const SPRING_MATCHES = [
   { date:'2026-04-21', week:4, court:'Court 2', time:'5:30 PM',
     t1:['Kathleen McNeil','Jay Issacson'], t2:['Will Wait','Robb Warren'], s1:4, s2:4, subs:['Robb Warren','Jay Issacson'] },
 
-  // ── Week 4 · Court 1 · 7:00 PM — Stacy Reid (Sub F) & Tammy Krez (Sub Kathleen) excluded ──
+  // ── Week 4 · Court 1 · 7:00 PM — Tim O'Brien (Sub F) & Tammy Krez (Sub Kathleen) excluded ──
   { date:'2026-04-21', week:4, court:'Court 1', time:'7:00 PM',
-    t1:['Stacy Reid','Tammy Krez'], t2:['Patrick Grant','Missy Dunn'], s1:4, s2:4, subs:['Stacy Reid','Tammy Krez'] },
+    t1:["Tim O'Brien",'Tammy Krez'], t2:['Patrick Grant','Missy Dunn'], s1:4, s2:4, subs:["Tim O'Brien",'Tammy Krez'] },
   { date:'2026-04-21', week:4, court:'Court 1', time:'7:00 PM',
-    t1:['Stacy Reid','Patrick Grant'], t2:['Tammy Krez','Missy Dunn'], s1:6, s2:2, subs:['Stacy Reid','Tammy Krez'] },
+    t1:["Tim O'Brien",'Patrick Grant'], t2:['Tammy Krez','Missy Dunn'], s1:6, s2:2, subs:["Tim O'Brien",'Tammy Krez'] },
   { date:'2026-04-21', week:4, court:'Court 1', time:'7:00 PM',
-    t1:['Stacy Reid','Missy Dunn'], t2:['Tammy Krez','Patrick Grant'], s1:5, s2:3, subs:['Stacy Reid','Tammy Krez'] },
+    t1:["Tim O'Brien",'Missy Dunn'], t2:['Tammy Krez','Patrick Grant'], s1:5, s2:3, subs:["Tim O'Brien",'Tammy Krez'] },
 
   // ── Week 4 · Court 2 · 7:00 PM — Will Wait subbing for Cliff, both excluded ──
   { date:'2026-04-21', week:4, court:'Court 2', time:'7:00 PM',
@@ -745,7 +745,7 @@ const SPRING_MATCHES = [
 const SPRING_PLAYERS = [
   'Felipe Quaassdorff','Cliff Tribus','Patrick Grant','JD Maloney',
   'Kathleen McNeil','Shelby/Jack','George Frese',
-  'Stacy Reid','Tammy Krez','Robb Warren','Josh Pelletter',
+  "Tim O'Brien",'Tammy Krez','Robb Warren','Josh Pelletter',
   'Will Wait','Eric Engen','Marc Gerothanas','Jay Issacson','Missy Dunn'
 ];
 
@@ -755,7 +755,7 @@ const PERMANENT_SUBS = [];
 // ─── SPRING RENDER ────────────────────────────────────────────
 // Split phase rosters
 const UPPER_LEAGUE = ['Marc Gerothanas','Will Wait','Cliff Tribus','Josh Pelletter','JD Maloney','Tammy Krez','Felipe Quaassdorff','Patrick Grant'];
-const LOWER_LEAGUE = ['George Frese','Missy Dunn','Eric Engen','Kathleen McNeil','Robb Warren','Stacy Reid','Shelby/Jack','Jay Issacson'];
+const LOWER_LEAGUE = ['George Frese','Missy Dunn','Eric Engen','Kathleen McNeil','Robb Warren',"Tim O'Brien",'Shelby/Jack','Jay Issacson'];
 const SPLIT_WEEK_START = 5; // weeks >= 5 count for split phase standings
 
 function renderSStandings() {
