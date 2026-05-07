@@ -739,6 +739,19 @@ const SPRING_MATCHES = [
     t1:['JD Maloney','Will Wait'], t2:['Shelby/Jack','Josh Pelletter'], s1:7, s2:1, subs:['Will Wait','Cliff Tribus'] },
   { date:'2026-04-21', week:4, court:'Court 2', time:'7:00 PM',
     t1:['JD Maloney','Josh Pelletter'], t2:['Shelby/Jack','Will Wait'], s1:6, s2:2, subs:['Will Wait','Cliff Tribus'] },
+
+  // ── Week 5 · May 5 · Split Phase Week 1 ──
+  // Upper League Court 1 5:30: Will=14, Felipe=12, Tammy=12, Cliff=10
+  { date:'2026-05-05', week:5, court:'Court 1', time:'5:30 PM',
+    aggregate:true, players:{'Will Wait':14,'Felipe Quaassdorff':12,'Tammy Krez':12,'Cliff Tribus':10}, gamesPlayed:24, subs:[] },
+
+  // Upper League Court 1 7:00: Marc=13, JD=15, Josh=11, Patrick=9
+  { date:'2026-05-05', week:5, court:'Court 1', time:'7:00 PM',
+    aggregate:true, players:{'Marc Gerothanas':13,'JD Maloney':15,'Josh Pelletter':11,'Patrick Grant':9}, gamesPlayed:24, subs:[] },
+
+  // Lower League Court 2 5:30: Jack=13, Robb=13, Missy=11, Tim=11
+  { date:'2026-05-05', week:5, court:'Court 2', time:'5:30 PM',
+    aggregate:true, players:{'Shelby/Jack':13,'Robb Warren':13,'Missy Dunn':11,"Tim O'Brien":11}, gamesPlayed:24, subs:[] },
 ];
 
 // Players whose points COUNT in standings (not subs)
@@ -764,6 +777,7 @@ function renderSStandings() {
   // ── Regular season stats (weeks 1–4) ──
   const regSt = {};
   SPRING_MATCHES.filter(m => m.week <= 4).forEach(m => {
+    if (m.aggregate) return;
     [...m.t1,...m.t2].forEach(p => {
       if (m.subs && m.subs.includes(p)) return;
       if (!regSt[p]) regSt[p] = {won:0, tot:0};
@@ -776,13 +790,22 @@ function renderSStandings() {
   // ── Split phase stats (weeks 5+) — fresh scores ──
   const splitSt = {};
   SPRING_MATCHES.filter(m => m.week >= SPLIT_WEEK_START).forEach(m => {
-    [...m.t1,...m.t2].forEach(p => {
-      if (m.subs && m.subs.includes(p)) return;
-      if (!splitSt[p]) splitSt[p] = {won:0, tot:0};
-      const onT1 = m.t1.includes(p);
-      splitSt[p].won += onT1 ? m.s1 : m.s2;
-      splitSt[p].tot += m.s1 + m.s2;
-    });
+    if (m.aggregate) {
+      // Aggregate format: players object with individual totals
+      Object.entries(m.players).forEach(([p, won]) => {
+        if (!splitSt[p]) splitSt[p] = {won:0, tot:0};
+        splitSt[p].won += won;
+        splitSt[p].tot += m.gamesPlayed;
+      });
+    } else {
+      [...m.t1,...m.t2].forEach(p => {
+        if (m.subs && m.subs.includes(p)) return;
+        if (!splitSt[p]) splitSt[p] = {won:0, tot:0};
+        const onT1 = m.t1.includes(p);
+        splitSt[p].won += onT1 ? m.s1 : m.s2;
+        splitSt[p].tot += m.s1 + m.s2;
+      });
+    }
   });
 
   const renderRows = (players, id, stats) => {
@@ -849,12 +872,20 @@ function renderSResults() {
         <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:${hdrColor};background:${bgColor};padding:7px 14px;border-radius:8px 8px 0 0;border:1px solid ${hdrColor}30">${slot}</div>`;
 
       matches.forEach((m, i) => {
-        const t1w = m.s1 > m.s2;
-        const t1Label = m.t1.map(p => m.subs&&m.subs.includes(p) ? `<span style="color:var(--muted);font-style:italic">${p} (sub)</span>` : `<span>${p}</span>`).join(' + ');
-        const t2Label = m.t2.map(p => m.subs&&m.subs.includes(p) ? `<span style="color:var(--muted);font-style:italic">${p} (sub)</span>` : `<span>${p}</span>`).join(' + ');
-        html += `<div class="match-card" style="border-radius:${i===matches.length-1?'0 0 8px 8px':'0'};border-top:none;margin-bottom:0">
-          <div class="match-header"><span class="match-date-label">Match ${i+1} of 3</span></div>
-          <div class="match-body">
+        let bodyHtml;
+        if (m.aggregate) {
+          const sorted = Object.entries(m.players).sort((a,b)=>b[1]-a[1]);
+          bodyHtml = `<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+            ${sorted.map(([p,w])=>`<div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px 12px;display:flex;justify-content:space-between;align-items:center">
+              <span style="font-weight:600;font-size:13px">${p}</span>
+              <span style="font-family:monospace;color:var(--spring);font-weight:700">${w}<span style="color:var(--muted);font-size:10px">/24</span></span>
+            </div>`).join('')}
+          </div>`;
+        } else {
+          const t1w = m.s1 > m.s2;
+          const t1Label = m.t1.map(p => m.subs&&m.subs.includes(p) ? `<span style="color:var(--muted);font-style:italic">${p} (sub)</span>` : `<span>${p}</span>`).join(' + ');
+          const t2Label = m.t2.map(p => m.subs&&m.subs.includes(p) ? `<span style="color:var(--muted);font-style:italic">${p} (sub)</span>` : `<span>${p}</span>`).join(' + ');
+          bodyHtml = `<div class="match-body">
             <div class="team" style="font-size:13px">${t1Label}</div>
             <div class="score-box">
               <div class="${t1w?'score-win-s':''}"><span class="score-num">${m.s1}</span></div>
@@ -862,7 +893,11 @@ function renderSResults() {
               <div class="${!t1w?'score-win-s':''}"><span class="score-num">${m.s2}</span></div>
             </div>
             <div class="team right" style="font-size:13px">${t2Label}</div>
-          </div>
+          </div>`;
+        }
+        html += `<div class="match-card" style="border-radius:${i===matches.length-1?'0 0 8px 8px':'0'};border-top:none;margin-bottom:0">
+          <div class="match-header"><span class="match-date-label">${m.aggregate ? 'Individual Totals' : `Match ${i+1} of 3`}</span></div>
+          ${bodyHtml}
         </div>`;
       });
       html += `</div>`;
@@ -878,6 +913,14 @@ function renderSPlayers() {
   const st = {};
   SPRING_PLAYERS.forEach(p => st[p] = {won:0, tot:0});
   SPRING_MATCHES.forEach(m => {
+    if (m.aggregate) {
+      Object.entries(m.players).forEach(([p, won]) => {
+        if (!st[p]) st[p] = {won:0, tot:0};
+        st[p].won += won;
+        st[p].tot += m.gamesPlayed;
+      });
+      return;
+    }
     [...m.t1,...m.t2].forEach(p => {
       if (PERMANENT_SUBS.includes(p)) return;
       if (m.subs && m.subs.includes(p)) return;
