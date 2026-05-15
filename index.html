@@ -387,93 +387,7 @@ tbody tr:hover { background: var(--surface2); }
     .split-banner span { color: var(--muted); font-weight: 400; font-size: 12px; margin-left: 4px; }
   </style>
 
-  <div class="split-banner">🔥 Split Phase is here! <span>— Upper League & Lower League now underway · Tuesdays through May 19</span></div>
-
-  <!-- WEEK 1 -->
-  <div class="fixture-week">
-    <div class="fixture-week-hdr">Week 1 · May 5, 2026</div>
-    <div class="fixture-courts">
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c1"><span class="fixture-dot fd-c1"></span>Court 1 · 5:30 PM · 🔥 Upper League</div>
-        <div class="fixture-mini">
-          <div class="fixture-player">Will Wait</div>
-          <div class="fixture-player">Cliff Tribus</div>
-          <div class="fixture-player">Tammy Krez</div>
-          <div class="fixture-player">Felipe Quaassdorff</div>
-        </div>
-      </div>
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 5:30 PM · 🎾 Lower League</div>
-        <div class="fixture-mini">
-          <div class="fixture-player">Missy Dunn</div>
-          <div class="fixture-player">Robb Warren</div>
-          <div class="fixture-player">Tim O'Brien</div>
-          <div class="fixture-player">Shelby/Jack</div>
-        </div>
-      </div>
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c1"><span class="fixture-dot fd-c1"></span>Court 1 · 7:00 PM · 🔥 Upper League</div>
-        <div class="fixture-mini">
-          <div class="fixture-player">Marc Gerothanas</div>
-          <div class="fixture-player">Josh Pelletter</div>
-          <div class="fixture-player">JD Maloney</div>
-          <div class="fixture-player">Patrick Grant</div>
-        </div>
-      </div>
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 7:00 PM · 🎾 Lower League</div>
-        <div class="fixture-mini">
-          <div class="fixture-player" style="color:var(--muted);font-style:italic">George Frese — not available</div>
-          <div class="fixture-player" style="color:var(--muted);font-style:italic">Eric Engen — not available</div>
-          <div class="fixture-player" style="color:var(--muted);font-style:italic">Kathleen McNeil — not available</div>
-          <div class="fixture-player" style="color:var(--muted);font-style:italic">Jay Issacson — not available</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- WEEK 2 -->
-  <div class="fixture-week">
-    <div class="fixture-week-hdr">Week 2 · May 12, 2026</div>
-    <div class="fixture-courts">
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c1"><span class="fixture-dot fd-c1"></span>Court 1 · 5:30 PM · 🎾 Lower League</div>
-        <div class="fixture-mini">
-          <div class="fixture-player">George Frese</div>
-          <div class="fixture-player">Eric Engen</div>
-          <div class="fixture-player">Shelby/Jack</div>
-          <div class="fixture-player">Jay Issacson</div>
-        </div>
-      </div>
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 5:30 PM · 🔥 Upper League</div>
-        <div class="fixture-mini">
-          <div class="fixture-player">Will Wait</div>
-          <div class="fixture-player">Josh Pelletter</div>
-          <div class="fixture-player">JD Maloney</div>
-          <div class="fixture-player">Tammy Krez</div>
-        </div>
-      </div>
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c1"><span class="fixture-dot fd-c1"></span>Court 1 · 7:00 PM · 🎾 Lower League</div>
-        <div class="fixture-mini">
-          <div class="fixture-player">Missy Dunn</div>
-          <div class="fixture-player">Kathleen McNeil</div>
-          <div class="fixture-player">Robb Warren</div>
-          <div class="fixture-player">Tim O'Brien</div>
-        </div>
-      </div>
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 7:00 PM · 🔥 Upper League</div>
-        <div class="fixture-mini">
-          <div class="fixture-player">Marc Gerothanas</div>
-          <div class="fixture-player">Cliff Tribus</div>
-          <div class="fixture-player">Felipe Quaassdorff</div>
-          <div class="fixture-player">Patrick Grant</div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="split-banner">🏆 Final Week coming up! <span>— May 19 · Upper League on Court 1 · Lower League on Court 2</span></div>
 
   <!-- WEEK 3 -->
   <div class="fixture-week">
@@ -752,6 +666,20 @@ const SPRING_MATCHES = [
   // Lower League Court 2 5:30: Jack=13, Robb=13, Missy=11, Tim=11
   { date:'2026-05-05', week:5, court:'Court 2', time:'5:30 PM',
     aggregate:true, players:{'Shelby/Jack':13,'Robb Warren':13,'Missy Dunn':11,"Tim O'Brien":11}, gamesPlayed:24, subs:[] },
+
+  // ── Week 6 · May 12 · Split Phase Week 2 ──
+  // Upper League Court 2 5:30 PM: CANCELLED (Will, Josh, JD, Tammy — no scores)
+  // Upper League Court 2 7:00 PM: Felipe=12, Marc=14, Cliff=12, Patrick=10
+  { date:'2026-05-12', week:6, court:'Court 2', time:'7:00 PM',
+    aggregate:true, players:{'Felipe Quaassdorff':12,'Marc Gerothanas':14,'Cliff Tribus':12,'Patrick Grant':10}, gamesPlayed:24, subs:[] },
+
+  // Lower League Court 1 5:30 PM: Robb=15, Kathleen=13, Missy=11, Jay=9
+  { date:'2026-05-12', week:6, court:'Court 1', time:'5:30 PM',
+    aggregate:true, players:{'Robb Warren':15,'Kathleen McNeil':13,'Missy Dunn':11,'Jay Issacson':9}, gamesPlayed:24, subs:[] },
+
+  // Lower League Court 1 7:00 PM: George=15, Eric=11, Jack=11, Tim=11
+  { date:'2026-05-12', week:6, court:'Court 1', time:'7:00 PM',
+    aggregate:true, players:{'George Frese':15,'Eric Engen':11,'Shelby/Jack':11,"Tim O'Brien":11}, gamesPlayed:24, subs:[] },
 ];
 
 // Players whose points COUNT in standings (not subs)
