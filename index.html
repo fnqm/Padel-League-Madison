@@ -3,914 +3,485 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🏆 Madison Padel League</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Madison Padel League — Fall Season</title>
 <style>
-:root {
-  --bg: #0a0c0f;
-  --surface: #111318;
-  --surface2: #1a1d24;
-  --border: #2a2d35;
-  --accent: #c8f045;
-  --accent2: #45d4f0;
-  --spring: #f07845;
-  --spring2: #f5c842;
-  --text: #e8eaf0;
-  --muted: #6b7080;
-  --danger: #f04560;
-  --gold: #f5c842;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.6; min-height: 100vh; }
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
-.hero { position: relative; overflow: hidden; padding: 52px 24px 40px; text-align: center; border-bottom: 1px solid var(--border); }
-.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(200,240,69,0.10) 0%, transparent 70%); pointer-events: none; }
-.hero::after { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(200,240,69,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(200,240,69,0.03) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; }
-.hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 10vw, 88px); letter-spacing: 0.02em; line-height: 1; position: relative; z-index: 1; }
-.hero h1 span { color: var(--accent); }
-.hero .subtitle { color: var(--muted); font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 8px; position: relative; z-index: 1; }
+  :root{
+    --court: #1B4332;
+    --court-dark: #12332A;
+    --chalk: #F7F5EE;
+    --line: #DDD8C8;
+    --ink: #1E1E1B;
+    --ink-soft: #5B5A52;
+    --ball: #C4D82E;
+    --ball-dark: #9EAE1F;
+    --white: #FFFFFF;
+  }
 
-.season-tabs { display: flex; border-bottom: 1px solid var(--border); background: var(--surface); position: sticky; top: 0; z-index: 200; }
-.season-tab { flex: 1; background: transparent; border: none; color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; padding: 14px 20px; cursor: pointer; transition: all 0.2s; border-bottom: 2px solid transparent; letter-spacing: 0.03em; }
-.season-tab:hover { color: var(--text); background: var(--surface2); }
-.season-tab.aw { color: var(--accent); border-bottom-color: var(--accent); background: rgba(200,240,69,0.04); }
-.season-tab.as { color: var(--spring); border-bottom-color: var(--spring); background: rgba(240,120,69,0.04); }
+  *{box-sizing:border-box; margin:0; padding:0;}
 
-.nav { display: flex; flex-wrap: wrap; gap: 4px; padding: 8px 12px; border-bottom: 1px solid var(--border); background: var(--bg); justify-content: center; }
-.nav::-webkit-scrollbar { display: none; }
-.nav-btn { flex-shrink: 0; background: transparent; border: 1px solid transparent; color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; padding: 7px 12px; border-radius: 8px; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
-.nav-btn:hover { color: var(--text); background: var(--surface2); }
-.nav-btn.aw { background: rgba(200,240,69,0.08); border-color: rgba(200,240,69,0.2); color: var(--accent); }
-.nav-btn.as { background: rgba(240,120,69,0.08); border-color: rgba(240,120,69,0.2); color: var(--spring); }
+  body{
+    background:var(--chalk);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
 
-.section { display: none; padding: 28px 24px; max-width: 940px; margin: 0 auto; animation: fadeIn 0.2s ease; }
-.section.active { display: block; }
-@keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+  h1,h2,h3, .num{
+    font-family:'Oswald', sans-serif;
+  }
 
-.section-title { font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 0.05em; color: var(--text); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
-.section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-.section-title.spring-title { color: var(--spring); }
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 20px 80px;
+  }
 
-.table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 24px; }
-table { width: 100%; border-collapse: collapse; }
-thead tr { background: var(--surface2); }
-th { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; padding: 11px 16px; text-align: left; border-bottom: 1px solid var(--border); }
-td { padding: 13px 16px; border-bottom: 1px solid var(--border); font-size: 14px; }
-tbody tr:last-child td { border-bottom: none; }
-tbody tr:hover { background: var(--surface2); }
-.rank { font-family: 'DM Mono', monospace; font-weight: 500; color: var(--muted); font-size: 13px; }
-.player-name { font-weight: 600; }
-.eff { font-family: 'DM Mono', monospace; color: var(--accent2); }
-.pts { font-family: 'DM Mono', monospace; font-weight: 600; color: var(--accent); }
-.pts-s { font-family: 'DM Mono', monospace; font-weight: 600; color: var(--spring); }
-.empty-state { text-align: center; padding: 36px 24px; color: var(--muted); font-size: 14px; }
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--court);
+    color:var(--chalk);
+    padding:48px 20px 40px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:'';
+    position:absolute;
+    right:-60px; top:-60px;
+    width:220px; height:220px;
+    border:3px solid rgba(196,216,46,0.25);
+    border-radius:50%;
+  }
+  .hero-inner{
+    max-width:760px;
+    margin:0 auto;
+    position:relative;
+    z-index:1;
+  }
+  .eyebrow{
+    color:var(--ball);
+    font-weight:600;
+    font-size:14px;
+    letter-spacing:0.02em;
+    margin-bottom:10px;
+  }
+  .hero h1{
+    font-size:clamp(32px,6vw,46px);
+    font-weight:700;
+    letter-spacing:0.01em;
+    line-height:1.05;
+    margin-bottom:16px;
+  }
+  .hero-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    margin-top:24px;
+    padding-top:20px;
+    border-top:1px solid rgba(247,245,238,0.2);
+  }
+  .meta-item .label{
+    font-size:12px;
+    color:rgba(247,245,238,0.6);
+    margin-bottom:2px;
+  }
+  .meta-item .value{
+    font-size:16px;
+    font-weight:600;
+  }
 
-.match-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; margin-bottom: 10px; }
-.match-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-.match-date-label { font-size: 11px; font-family: 'DM Mono', monospace; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
-.wk-pill { font-size: 10px; font-family: 'DM Mono', monospace; padding: 2px 8px; border-radius: 100px; background: rgba(200,240,69,0.08); color: var(--accent); border: 1px solid rgba(200,240,69,0.15); }
-.wk-pill.sp { background: rgba(240,120,69,0.08); color: var(--spring); border-color: rgba(240,120,69,0.15); }
-.match-body { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; }
-.team { display: flex; flex-direction: column; gap: 2px; }
-.team.right { align-items: flex-end; }
-.team-player { font-size: 14px; font-weight: 600; }
-.score-box { display: flex; align-items: center; gap: 8px; background: var(--surface2); border-radius: 10px; padding: 10px 14px; }
-.score-num { font-family: 'Bebas Neue', sans-serif; font-size: 30px; line-height: 1; color: var(--text); }
-.score-sep { color: var(--muted); font-family: 'DM Mono', monospace; }
-.score-win .score-num { color: var(--accent); }
-.score-win-s .score-num { color: var(--spring); }
+  /* ---------- SECTION ---------- */
+  section{
+    padding:40px 0 8px;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{border-bottom:none;}
+  .section-title{
+    font-size:13px;
+    font-weight:600;
+    color:var(--ink-soft);
+    letter-spacing:0.06em;
+    margin-bottom:4px;
+  }
+  .section-heading{
+    font-size:24px;
+    font-weight:600;
+    margin-bottom:20px;
+  }
 
-.schedule-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px; margin-bottom: 10px; display: flex; align-items: center; gap: 14px; }
-.sched-date { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; text-align: center; flex-shrink: 0; min-width: 54px; }
-.sched-date .mo { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); font-family: 'DM Mono', monospace; }
-.sched-date .mo.sp { color: var(--spring); }
-.sched-date .dy { font-family: 'Bebas Neue', sans-serif; font-size: 24px; line-height: 1; color: var(--text); }
-.sched-info { flex: 1; }
-.sched-info .time { font-size: 12px; color: var(--muted); font-family: 'DM Mono', monospace; }
-.sched-info .lbl { font-weight: 600; margin-top: 2px; font-size: 14px; }
-.sched-info .loc { font-size: 12px; color: var(--muted); margin-top: 2px; }
-.s-pill { font-size: 10px; font-family: 'DM Mono', monospace; padding: 3px 9px; border-radius: 100px; flex-shrink: 0; letter-spacing: 0.05em; }
-.p-reg { background: rgba(200,240,69,0.08); color: var(--accent); border: 1px solid rgba(200,240,69,0.2); }
-.p-finals { background: rgba(245,200,66,0.10); color: var(--gold); border: 1px solid rgba(245,200,66,0.25); }
-.p-spr { background: rgba(240,120,69,0.08); color: var(--spring); border: 1px solid rgba(240,120,69,0.2); }
-.p-split { background: rgba(245,200,66,0.08); color: var(--spring2); border: 1px solid rgba(245,200,66,0.2); }
+  /* ---------- STANDINGS ---------- */
+  .standings-row{
+    display:grid;
+    grid-template-columns:32px 1fr 70px 90px;
+    align-items:center;
+    gap:12px;
+    padding:12px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .standings-row.head{
+    font-size:12px;
+    color:var(--ink-soft);
+    font-weight:600;
+    border-bottom:2px solid var(--ink);
+    padding-bottom:8px;
+  }
+  .rank{
+    font-family:'Oswald',sans-serif;
+    font-size:18px;
+    font-weight:600;
+    color:var(--ink-soft);
+  }
+  .rank.top{color:var(--court);}
+  .player-name{font-weight:500;}
+  .player-sub{font-size:12px; color:var(--ink-soft); margin-top:2px;}
+  .pct{
+    font-weight:700;
+    font-size:16px;
+    text-align:right;
+  }
+  .bar-track{
+    height:6px;
+    background:var(--line);
+    border-radius:3px;
+    overflow:hidden;
+  }
+  .bar-fill{
+    height:100%;
+    background:var(--ball-dark);
+  }
+  .not-played{
+    font-size:12px;
+    color:var(--ink-soft);
+    font-style:italic;
+  }
 
-.guideline-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 12px; position: relative; overflow: hidden; }
-.guideline-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); border-radius: 0 2px 2px 0; }
-.guideline-card.sc::before { background: var(--spring); }
-.gnum { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 5px; text-transform: uppercase; }
-.gnum.sp { color: var(--spring); }
-.guideline-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.05em; margin-bottom: 10px; color: var(--text); }
-.guideline-card ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-.guideline-card li { font-size: 14px; color: #b0b4c0; padding-left: 16px; position: relative; line-height: 1.5; }
-.guideline-card li::before { content: '—'; position: absolute; left: 0; color: var(--muted); }
-.guideline-card strong { color: var(--text); font-weight: 600; }
-.info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; margin-bottom: 12px; }
-.info-chip { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
-.info-chip .ilbl { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2px; font-family: 'DM Mono', monospace; }
-.info-chip .ival { color: var(--text); font-weight: 600; font-size: 13px; }
-.finals-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
-.finals-card { border-radius: 10px; padding: 14px; text-align: center; }
-.finals-card .trophy { font-size: 20px; margin-bottom: 4px; }
-.finals-card .frange { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.05em; }
-.fc-top { background: rgba(245,200,66,0.07); border: 1px solid rgba(245,200,66,0.2); }
-.fc-top .frange { color: var(--gold); }
-.fc-bot { background: rgba(69,212,240,0.07); border: 1px solid rgba(69,212,240,0.2); }
-.fc-bot .frange { color: var(--accent2); }
-.fc-upper { background: rgba(240,120,69,0.07); border: 1px solid rgba(240,120,69,0.2); }
-.fc-upper .frange { color: var(--spring); }
-.fc-lower { background: rgba(100,200,100,0.07); border: 1px solid rgba(100,200,100,0.2); }
-.fc-lower .frange { color: #64c864; }
+  /* ---------- WEEK CARD ---------- */
+  .week-block{
+    margin-bottom:28px;
+  }
+  .week-label{
+    display:inline-block;
+    font-size:12px;
+    font-weight:600;
+    color:var(--court);
+    background:rgba(27,67,50,0.08);
+    padding:4px 10px;
+    border-radius:3px;
+    margin-bottom:12px;
+  }
+  .court-group{
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:16px 18px;
+    margin-bottom:12px;
+  }
+  .court-title{
+    font-size:13px;
+    font-weight:600;
+    color:var(--ink-soft);
+    margin-bottom:10px;
+  }
+  .court-players{
+    display:grid;
+    grid-template-columns:1fr auto;
+    row-gap:6px;
+    font-size:15px;
+  }
+  .court-players .name{font-weight:500;}
+  .court-players .wins{color:var(--ink-soft); text-align:right;}
 
-.phase-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin: 22px 0 10px; }
-.sub-section-title { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.05em; margin: 22px 0 12px; color: var(--muted); }
+  .empty-week{
+    border:1px dashed var(--line);
+    border-radius:4px;
+    padding:20px 18px;
+    color:var(--ink-soft);
+    font-size:14px;
+  }
 
-.players-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; margin-bottom: 24px; }
-.player-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px; text-align: center; transition: border-color 0.2s; }
-.player-card:hover { border-color: rgba(200,240,69,0.3); }
-.player-card.sc:hover { border-color: rgba(240,120,69,0.3); }
-.player-card .av { width: 40px; height: 40px; border-radius: 50%; background: var(--surface2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; font-size: 15px; font-weight: 700; color: var(--accent); font-family: 'Bebas Neue', sans-serif; }
-.player-card.sc .av { color: var(--spring); }
-.player-card .pname { font-weight: 600; font-size: 13px; line-height: 1.3; }
-.player-card .pstat { font-size: 11px; color: var(--muted); font-family: 'DM Mono', monospace; margin-top: 2px; }
+  /* ---------- FORMAT ---------- */
+  .format-list{
+    list-style:none;
+  }
+  .format-list li{
+    display:grid;
+    grid-template-columns:22px 1fr;
+    gap:10px;
+    padding:10px 0;
+    font-size:15px;
+    border-bottom:1px solid var(--line);
+  }
+  .format-list li:last-child{border-bottom:none;}
+  .format-list .dot{
+    color:var(--ball-dark);
+    font-weight:700;
+  }
 
-.division-banner { border-radius: 10px; padding: 12px 16px; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; font-size: 13px; }
-.db-upper { background: rgba(240,120,69,0.06); border: 1px solid rgba(240,120,69,0.2); }
-.db-lower { background: rgba(100,200,100,0.06); border: 1px solid rgba(100,200,100,0.2); }
-.division-banner .di { font-size: 20px; }
-.division-banner strong { color: var(--text); display: block; font-size: 14px; }
-.division-banner span { color: var(--muted); font-size: 12px; }
+  .roster-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+    gap:10px;
+  }
+  .roster-item{
+    font-size:14px;
+    padding:8px 10px;
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:4px;
+  }
 
-.toast { position: fixed; bottom: 20px; right: 20px; background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 10px 16px; font-size: 13px; z-index: 9999; transform: translateY(80px); opacity: 0; transition: all 0.3s; max-width: 260px; }
-.toast.show { transform: none; opacity: 1; }
-.toast.ok { border-color: rgba(200,240,69,0.35); color: var(--accent); }
-.toast.err { border-color: rgba(240,69,96,0.35); color: var(--danger); }
+  footer{
+    text-align:center;
+    font-size:12px;
+    color:var(--ink-soft);
+    padding:30px 0 10px;
+  }
 
-@media (max-width: 600px) {
-  .match-body { gap: 6px; }
-  .team-player { font-size: 12px; }
-  .score-num { font-size: 24px; }
-  .finals-grid { grid-template-columns: 1fr; }
-  .section { padding: 18px 14px; }
-}
+  @media(max-width:480px){
+    .standings-row{grid-template-columns:24px 1fr 55px 70px; gap:8px;}
+  }
 </style>
 </head>
 <body>
 
 <div class="hero">
-  <h1>Madison <span>Padel</span> League</h1>
-  <p class="subtitle">Wisconsin's Fight Club Padel Community</p>
+  <div class="hero-inner">
+    <div class="eyebrow">MADISON PADEL LEAGUE</div>
+    <h1>Fall Season</h1>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <div class="label">Duration</div>
+        <div class="value">8 weeks</div>
+      </div>
+      <div class="meta-item">
+        <div class="label">Day &amp; time</div>
+        <div class="value">Wednesdays, 5:30–7:00 PM</div>
+      </div>
+      <div class="meta-item">
+        <div class="label">First week</div>
+        <div class="value">September 9</div>
+      </div>
+      <div class="meta-item">
+        <div class="label">Extra slot</div>
+        <div class="value">7:00–8:30, if enough players</div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="season-tabs">
-  <button class="season-tab" id="tab-s" onclick="switchSeason('spring')">🌿 Spring 2026</button>
-  <button class="season-tab" id="tab-w" onclick="switchSeason('winter')">❄️ Winter 2026</button>
+<div class="wrap">
+
+  <!-- STANDINGS -->
+  <section>
+    <div class="section-title">RANKINGS</div>
+    <div class="section-heading">Standings</div>
+    <div id="standings"></div>
+  </section>
+
+  <!-- WEEKLY RESULTS / UPCOMING -->
+  <section>
+    <div class="section-title">WEEK BY WEEK</div>
+    <div class="section-heading">Results &amp; Matchups</div>
+    <div id="weeks"></div>
+  </section>
+
+  <!-- FORMAT -->
+  <section>
+    <div class="section-title">HOW IT WORKS</div>
+    <div class="section-heading">Season Format</div>
+    <ul class="format-list">
+      <li><span class="dot">•</span><span>Sign up each week — matchups aren't fixed in advance. I'll pair you with different players for the first 6 weeks.</span></li>
+      <li><span class="dot">•</span><span>Signing up doesn't guarantee a spot. It depends on sign-up order and total players that week.</span></li>
+      <li><span class="dot">•</span><span>If more than 8 sign up (say 12), the last 4 to sign up will be asked about the 7:00–8:30 slot.</span></li>
+      <li><span class="dot">•</span><span>Each day: alternating partners, 8 games per partner combination (2 serves each), 24 games total.</span></li>
+      <li><span class="dot">•</span><span>Ranking is based on percentage of games won out of games played.</span></li>
+      <li><span class="dot">•</span><span>The final 2 weeks are a playoff round between the top-ranked players.</span></li>
+    </ul>
+  </section>
+
+  <!-- ROSTER -->
+  <section>
+    <div class="section-title">PLAYERS</div>
+    <div class="section-heading">Season Roster</div>
+    <div class="roster-grid" id="roster"></div>
+  </section>
+
 </div>
 
-<nav class="nav">
-  <button class="nav-btn aw" data-s="guidelines" onclick="showSec('guidelines',event)">📋 Guidelines</button>
-  <button class="nav-btn" data-s="standings" onclick="showSec('standings',event)">📊 Standings</button>
-  <button class="nav-btn" data-s="results" onclick="showSec('results',event)">🎯 Results</button>
-  <button class="nav-btn" data-s="schedule" onclick="showSec('schedule',event)">📅 Schedule</button>
-  <button class="nav-btn" data-s="players" onclick="showSec('players',event)">👥 Players</button>
-</nav>
-
-<!-- ══ WINTER 2026 ══ -->
-<div id="div-winter">
-
-<section id="w-guidelines" class="section active">
-  <div class="section-title">📋 Guidelines — Winter 2026</div>
-  <div class="guideline-card">
-    <div class="gnum">01 / League Structure</div><h3>League Structure</h3>
-    <div class="info-grid">
-      <div class="info-chip"><div class="ilbl">Players</div><div class="ival">8 core</div></div>
-      <div class="info-chip"><div class="ilbl">Match Day</div><div class="ival">Tuesdays</div></div>
-      <div class="info-chip"><div class="ilbl">Time</div><div class="ival">5:30–8:30 PM</div></div>
-      <div class="info-chip"><div class="ilbl">Regular Season</div><div class="ival">5 weeks</div></div>
-    </div>
-    <ul>
-      <li><strong>Match 1:</strong> 5:30–7:00 PM (4 players)</li>
-      <li><strong>Match 2:</strong> 7:00–8:30 PM (4 players)</li>
-      <li><strong>Regular Season:</strong> Feb 10, 17, 24 · Mar 3 & 10</li>
-      <li><strong>Finals:</strong> Mar 17</li>
-    </ul>
-  </div>
-  <div class="guideline-card">
-    <div class="gnum">02 / Regular Season Format</div><h3>Regular Season Format</h3>
-    <ul>
-      <li><strong>3 sets per match</strong></li>
-      <li>Partners alternate every set</li>
-      <li>Players for each match and set are selected randomly — the organizer may make minor adjustments to minimize repeated combinations</li>
-      <li>Players must track games won and lost</li>
-      <li>One player from each match must update the score on the Google Sheet provided</li>
-    </ul>
-    <br>
-    <ul>
-      <li><strong>📊 Rankings</strong> are based on total games won (not sets won). Tiebreaker: sets won.</li>
-      <li><strong>📈 Eff%</strong> = Points ÷ Total Games Played. Example: Win 6-3, 7-6, lose 4-6 → Eff% = 17/32 = 53%</li>
-    </ul>
-  </div>
-  <div class="guideline-card">
-    <div class="gnum">03 / Scoring Rules</div><h3>Scoring Rules</h3>
-    <ul>
-      <li><strong>Deuce:</strong> one deuce only, followed by a Golden Point</li>
-      <li><strong>6–6 in a set:</strong> standard tiebreak to 7, win by 2</li>
-    </ul>
-  </div>
-  <div class="guideline-card">
-    <div class="gnum">04 / Finals</div><h3>Finals Format</h3>
-    <p style="font-size:14px;color:#b0b4c0;margin-bottom:12px;">Finals are seeded based on regular-season rankings.</p>
-    <div class="finals-grid">
-      <div class="finals-card fc-top"><div class="trophy">🏆</div><div class="frange">1st–4th</div><div style="font-size:11px;color:#b0b4c0;margin-top:3px">Top 4 Match</div></div>
-      <div class="finals-card fc-bot"><div class="trophy">🎾</div><div class="frange">5th–8th</div><div style="font-size:11px;color:#b0b4c0;margin-top:3px">Bottom 4 Match</div></div>
-    </div>
-    <ul style="margin-top:12px">
-      <li><strong>Top 4:</strong> Best 4 players compete together</li>
-      <li><strong>Bottom 4:</strong> Other 4 players compete together</li>
-      <li>Format: <strong>best of 3 sets</strong> with rotating partners</li>
-    </ul>
-  </div>
-  <div class="guideline-card">
-    <div class="gnum">05 / Substitution Policy</div><h3>Substitution Policy</h3>
-    <ul>
-      <li>Notify the group chat at least <strong>3 days in advance</strong> if you cannot attend</li>
-      <li><strong>Finding a substitute is the responsibility of the absent player</strong></li>
-      <li>The group chat includes people willing to sub — share date and time to find a replacement</li>
-      <li>If no sub is found, the match will be rescheduled as a last resort</li>
-    </ul>
-  </div>
-</section>
-
-<section id="w-standings" class="section">
-  <div class="section-title">🏆 Standings — Winter 2026</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>#</th><th>Player</th><th>Points</th><th>Eff%</th><th>MW</th><th>ML</th></tr></thead>
-    <tbody id="wb-standings"><tr><td colspan="6"><div class="empty-state">No data yet</div></td></tr></tbody>
-  </table></div>
-  <div class="sub-section-title">🔄 Sub Leaderboard</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>#</th><th>Player</th><th>Points</th><th>Eff%</th><th>SW</th><th>SL</th></tr></thead>
-    <tbody id="wb-subs"><tr><td colspan="6"><div class="empty-state">No substitute records yet</div></td></tr></tbody>
-  </table></div>
-</section>
-
-<section id="w-results" class="section">
-  <div class="section-title">🎯 Results — Winter 2026</div>
-  <div id="wb-results"><div class="empty-state">No results recorded yet</div></div>
-</section>
-
-<section id="w-schedule" class="section">
-  <div class="section-title">📅 Schedule — Winter 2026</div>
-  <div class="schedule-item"><div class="sched-date"><div class="mo">Feb</div><div class="dy">10</div></div><div class="sched-info"><div class="time">5:30 – 8:30 PM</div><div class="lbl">Regular Season · Week 1</div><div class="loc">📍 Wisconsin Fight Club</div></div><span class="s-pill p-reg">Week 1</span></div>
-  <div class="schedule-item"><div class="sched-date"><div class="mo">Feb</div><div class="dy">17</div></div><div class="sched-info"><div class="time">5:30 – 8:30 PM</div><div class="lbl">Regular Season · Week 2</div><div class="loc">📍 Wisconsin Fight Club</div></div><span class="s-pill p-reg">Week 2</span></div>
-  <div class="schedule-item"><div class="sched-date"><div class="mo">Feb</div><div class="dy">24</div></div><div class="sched-info"><div class="time">5:30 – 8:30 PM</div><div class="lbl">Regular Season · Week 3</div><div class="loc">📍 Wisconsin Fight Club</div></div><span class="s-pill p-reg">Week 3</span></div>
-  <div class="schedule-item"><div class="sched-date"><div class="mo">Mar</div><div class="dy">3</div></div><div class="sched-info"><div class="time">5:30 – 8:30 PM</div><div class="lbl">Regular Season · Week 4</div><div class="loc">📍 Wisconsin Fight Club</div></div><span class="s-pill p-reg">Week 4</span></div>
-  <div class="schedule-item"><div class="sched-date"><div class="mo">Mar</div><div class="dy">10</div></div><div class="sched-info"><div class="time">5:30 – 8:30 PM</div><div class="lbl">Regular Season · Week 5</div><div class="loc">📍 Wisconsin Fight Club</div></div><span class="s-pill p-reg">Week 5</span></div>
-  <div class="schedule-item"><div class="sched-date"><div class="mo">Mar</div><div class="dy">17</div></div><div class="sched-info"><div class="time">5:30 – 8:30 PM</div><div class="lbl">🏆 Finals Day</div><div class="loc">📍 Wisconsin Fight Club</div></div><span class="s-pill p-finals">Finals</span></div>
-</section>
-
-<section id="w-players" class="section">
-  <div class="section-title">👥 Players — Winter 2026</div>
-  <div class="players-grid" id="wb-players"><div class="empty-state" style="grid-column:1/-1">No players added yet</div></div>
-</section>
-
-</div><!-- /div-winter -->
-
-<!-- ══ SPRING 2026 ══ -->
-<div id="div-spring" style="display:none">
-
-<section id="s-guidelines" class="section active">
-  <div class="section-title spring-title">📋 Guidelines — Spring 2026</div>
-  <div class="guideline-card sc">
-    <div class="gnum sp">01 / League Structure</div><h3>League Structure</h3>
-    <div class="info-grid">
-      <div class="info-chip"><div class="ilbl">Players</div><div class="ival">16 total</div></div>
-      <div class="info-chip"><div class="ilbl">Match Day</div><div class="ival">Tuesdays</div></div>
-      <div class="info-chip"><div class="ilbl">Time</div><div class="ival">5:30–8:30 PM</div></div>
-      <div class="info-chip"><div class="ilbl">Regular Phase</div><div class="ival">4 weeks</div></div>
-      <div class="info-chip"><div class="ilbl">Split Phase</div><div class="ival">4 weeks</div></div>
-      <div class="info-chip"><div class="ilbl">Season Start</div><div class="ival">Mar 31</div></div>
-    </div>
-    <ul>
-      <li><strong>Regular Phase:</strong> Mar 31 · Apr 7 · Apr 14 · Apr 21 (4 weeks, all together)</li>
-      <li><strong>Split Phase:</strong> Apr 28 · May 5 · May 12 · May 19 — Top 8 in Upper League, Bottom 8 in Lower League</li>
-    </ul>
-  </div>
-  <div class="guideline-card sc">
-    <div class="gnum sp">02 / Individual Ranking Format</div><h3>Individual Ranking</h3>
-    <ul>
-      <li>Each player accumulates points from every game they play</li>
-      <li>📈 Eff% is the primary ranking driver — calculated as Games Won divided by Total Games Played</li>
-    </ul>
-  </div>
-  <div class="guideline-card sc">
-    <div class="gnum sp">03 / Scoring Rules</div><h3>Scoring Rules</h3>
-    <ul>
-      <li><strong>Match format:</strong> each player serves twice · 8 service games per match in total</li>
-      <li><strong>Night total:</strong> 3 matches per Tuesday = 24 games played per player</li>
-      <li><strong>Deuce:</strong> the first two deuces are played out normally (advantage in/out) · if a third deuce is reached, a single Golden Point decides the game immediately</li>
-      <li><strong>Substitutes:</strong> games played by a substitute do not count toward the absent player's score — only games played in person are recorded</li>
-    </ul>
-  </div>
-  <div class="guideline-card sc">
-    <div class="gnum sp">04 / Season Split After Week 4</div><h3>Season Split</h3>
-    <p style="font-size:14px;color:#b0b4c0;margin-bottom:12px;">After 4 weeks, players are ranked and split into two leagues for the remaining 4 weeks.</p>
-    <div class="finals-grid">
-      <div class="finals-card fc-upper"><div class="trophy">🔥</div><div class="frange">Top 8</div><div style="font-size:11px;color:#b0b4c0;margin-top:3px">Upper League</div></div>
-      <div class="finals-card fc-lower"><div class="trophy">🎾</div><div class="frange">Bottom 8</div><div style="font-size:11px;color:#b0b4c0;margin-top:3px">Lower League</div></div>
-    </div>
-    <ul style="margin-top:12px">
-      <li><strong>Upper League (Top 8):</strong> compete among themselves — Apr 28 through May 19</li>
-      <li><strong>Lower League (Bottom 8):</strong> compete among themselves simultaneously</li>
-      <li>Final standings are determined separately within each league</li>
-    </ul>
-  </div>
-  <div class="guideline-card sc">
-    <div class="gnum sp">05 / Substitution Policy</div><h3>Substitution Policy</h3>
-    <ul>
-      <li>Notify the group chat at least <strong>3 days in advance</strong> if you cannot attend</li>
-      <li><strong>Finding a substitute is the responsibility of the absent player</strong></li>
-      <li>The group chat includes people willing to sub — share date and time to find a replacement</li>
-      <li>If no sub is found, the match may be rescheduled as a last resort</li>
-    </ul>
-  </div>
-</section>
-
-<section id="s-standings" class="section">
-  <div class="section-title spring-title">🏆 Standings — Spring 2026</div>
-
-  <div class="phase-label">🔥 Upper League — Split Phase (Fresh Start)</div>
-  <div class="division-banner db-upper"><div class="di">🔥</div><div><strong>Upper League</strong><span>Marc Gerothanas · Will Wait · Cliff Tribus · Josh Pelletter · JD Maloney · Tammy Krez · Felipe Quaassdorff · Patrick Grant</span></div></div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>#</th><th>Player</th><th>Games Won</th><th>Eff%</th><th>GW</th><th>GL</th></tr></thead>
-    <tbody id="sb-upper"><tr><td colspan="6"><div class="empty-state">Split phase starting soon — scores reset</div></td></tr></tbody>
-  </table></div>
-
-  <div class="phase-label" style="margin-top:28px">🎾 Lower League — Split Phase (Fresh Start)</div>
-  <div class="division-banner db-lower"><div class="di">🎾</div><div><strong>Lower League</strong><span>George Frese · Missy Dunn · Eric Engen · Kathleen McNeil · Robb Warren · Tim O'Brien · Shelby/Jack · Jay Issacson</span></div></div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>#</th><th>Player</th><th>Games Won</th><th>Eff%</th><th>GW</th><th>GL</th></tr></thead>
-    <tbody id="sb-lower"><tr><td colspan="6"><div class="empty-state">Split phase starting soon — scores reset</div></td></tr></tbody>
-  </table></div>
-
-  <div class="phase-label" style="margin-top:32px">📊 Regular Season Final Standings — Weeks 1–4</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>#</th><th>Player</th><th>Games Won</th><th>Eff%</th><th>GW</th><th>GL</th></tr></thead>
-    <tbody id="sb-standings"><tr><td colspan="6"><div class="empty-state">Loading...</div></td></tr></tbody>
-  </table></div>
-</section>
-
-<section id="s-results" class="section">
-  <div class="section-title spring-title">🎯 Results — Spring 2026</div>
-  <div id="sb-results"><div class="empty-state">Season starts Mar 31</div></div>
-</section>
-
-<section id="s-schedule" class="section">
-  <div class="section-title spring-title">📅 Schedule — Spring 2026</div>
-
-  <style>
-    .fixture-week { margin-bottom: 28px; }
-    .fixture-week-hdr { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.05em; color: var(--spring); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-    .fixture-week-hdr::after { content:''; flex:1; height:1px; background:var(--border); }
-    .fixture-courts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    @media(max-width:620px){ .fixture-courts { grid-template-columns:1fr; } }
-    .fixture-court { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-    .fixture-court-hdr { padding: 10px 14px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
-    .fc-c1 { background: #1B5E2018; color: #4CAF50; border-bottom: 1px solid #1B5E2030; }
-    .fc-c2 { background: #BF360C18; color: #FF7043; border-bottom: 1px solid #BF360C30; }
-    .fixture-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-    .fd-c1 { background: #4CAF50; }
-    .fd-c2 { background: #FF7043; }
-    .fixture-mini { padding: 12px 14px; display: flex; flex-direction: column; gap: 5px; }
-    .fixture-player { font-weight: 600; color: var(--text); font-size: 13px; padding: 4px 8px; background: var(--surface2); border-radius: 6px; border: 1px solid var(--border); }
-    .split-banner { background: rgba(245,200,66,0.07); border: 1px solid rgba(245,200,66,0.2); border-radius: 10px; padding: 12px 16px; margin: 20px 0 12px; display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--spring2); font-weight: 600; }
-    .split-banner span { color: var(--muted); font-weight: 400; font-size: 12px; margin-left: 4px; }
-  </style>
-
-  <div class="split-banner">🏆 Final Week coming up! <span>— May 19 · Upper League on Court 1 · Lower League on Court 2</span></div>
-
-  <!-- WEEK 3 -->
-  <div class="fixture-week">
-    <div class="fixture-week-hdr">Week 3 · May 19, 2026 🏆 Final Week</div>
-    <div class="fixture-courts">
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c1"><span class="fixture-dot fd-c1"></span>Court 1 · 5:30 PM · 🔥 Upper League</div>
-        <div class="fixture-mini">
-          <div class="fixture-player">Marc Gerothanas</div>
-          <div class="fixture-player">Will Wait</div>
-          <div class="fixture-player">Cliff Tribus</div>
-          <div class="fixture-player">Josh Pelletter</div>
-        </div>
-      </div>
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 5:30 PM · 🎾 Lower League</div>
-        <div class="fixture-mini">
-          <div class="fixture-player">George Frese</div>
-          <div class="fixture-player">Missy Dunn</div>
-          <div class="fixture-player">Eric Engen</div>
-          <div class="fixture-player">Kathleen McNeil</div>
-        </div>
-      </div>
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c1"><span class="fixture-dot fd-c1"></span>Court 1 · 7:00 PM · 🔥 Upper League</div>
-        <div class="fixture-mini">
-          <div class="fixture-player">JD Maloney</div>
-          <div class="fixture-player">Tammy Krez</div>
-          <div class="fixture-player">Felipe Quaassdorff</div>
-          <div class="fixture-player">Patrick Grant</div>
-        </div>
-      </div>
-      <div class="fixture-court">
-        <div class="fixture-court-hdr fc-c2"><span class="fixture-dot fd-c2"></span>Court 2 · 7:00 PM · 🎾 Lower League</div>
-        <div class="fixture-mini">
-          <div class="fixture-player">Robb Warren</div>
-          <div class="fixture-player">Tim O'Brien</div>
-          <div class="fixture-player">Shelby/Jack</div>
-          <div class="fixture-player">Jay Issacson</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-<section id="s-players" class="section">
-  <div class="section-title spring-title">👥 Players — Spring 2026</div>
-  <div class="players-grid" id="sb-players"><div class="empty-state" style="grid-column:1/-1">No players added yet</div></div>
-</section>
-
-</div><!-- /div-spring -->
-
-<div class="toast" id="toast"></div>
+<footer>Madison Padel League · Fall Season</footer>
 
 <script>
-// ─── STATE ────────────────────────────────────────────────────
-let state = { winter: { players: [], matches: [] }, spring: { players: [], matches: [] } };
-let cur = 'winter';
-
-function load() {
-  try { const s = localStorage.getItem('mpl3'); if (s) { const d = JSON.parse(s); state.winter = d.winter || state.winter; state.spring = d.spring || state.spring; } } catch(e){}
-}
-function save() { localStorage.setItem('mpl3', JSON.stringify(state)); }
-
-// ─── SEASON SWITCH ────────────────────────────────────────────
-function switchSeason(s) {
-  cur = s;
-  document.getElementById('div-winter').style.display = s==='winter'?'':'none';
-  document.getElementById('div-spring').style.display  = s==='spring'?'':'none';
-  document.getElementById('tab-w').className = 'season-tab'+(s==='winter'?' aw':'');
-  document.getElementById('tab-s').className = 'season-tab'+(s==='spring'?' as':'');
-  document.querySelectorAll('.nav-btn').forEach(b=>{ b.className='nav-btn'; if(b===document.querySelector('.nav-btn')) b.classList.add(s==='winter'?'aw':'as'); });
-  document.querySelectorAll('#div-winter .section, #div-spring .section').forEach(x=>x.classList.remove('active'));
-  document.getElementById((s==='spring'?'s-':'w-')+'guidelines').classList.add('active');
-  document.querySelectorAll('.nav-btn')[0].classList.add(s==='winter'?'aw':'as');
-  renderAll();
-}
-
-// ─── NAV ──────────────────────────────────────────────────────
-function showSec(name, e) {
-  const pfx = cur==='spring'?'s-':'w-';
-  document.querySelectorAll('#div-winter .section, #div-spring .section').forEach(x=>x.classList.remove('active'));
-  document.getElementById(pfx+name).classList.add('active');
-  document.querySelectorAll('.nav-btn').forEach(b=>b.className='nav-btn');
-  if(e&&e.currentTarget){ e.currentTarget.classList.add(cur==='winter'?'aw':'as'); }
-}
-
-// ─── TOAST ────────────────────────────────────────────────────
-function toast(msg,t='ok'){const el=document.getElementById('toast');el.textContent=msg;el.className=`toast show ${t}`;setTimeout(()=>el.classList.remove('show'),2800);}
-
-// ─── WINTER RENDER ────────────────────────────────────────────
-function renderWStandings() {
-  const st = {};
-  state.winter.players.forEach(p => st[p]={pts:0,tot:0,mw:0,ml:0});
-  state.winter.matches.forEach(m => {
-    [...m.t1,...m.t2].forEach(p => {
-      if (!st[p]) return;
-      const w = m.t1.includes(p)?m.s1:m.s2, l = m.t1.includes(p)?m.s2:m.s1;
-      st[p].pts+=w; st[p].tot+=w+l; w>l?st[p].mw++:st[p].ml++;
-    });
-  });
-  const ranked = state.winter.players.map(p=>({name:p,...st[p]})).sort((a,b)=>b.pts-a.pts||b.mw-a.mw);
-  const medals=['🥇','🥈','🥉'];
-  const el = document.getElementById('wb-standings');
-  if(!ranked.length){el.innerHTML='<tr><td colspan="6"><div class="empty-state">No players yet</div></td></tr>';return;}
-  el.innerHTML=ranked.map((p,i)=>{
-    const eff=p.tot?Math.round(p.pts/p.tot*100)+'%':'—';
-    return `<tr><td class="rank">${medals[i]||i+1}</td><td class="player-name">${p.name}</td><td class="pts">${p.pts}</td><td class="eff">${eff}</td><td>${p.mw}</td><td>${p.ml}</td></tr>`;
-  }).join('');
-}
-
-function renderWResults() {
-  const el=document.getElementById('wb-results');
-  if(!state.winter.matches.length){el.innerHTML='<div class="empty-state">No results yet</div>';return;}
-  el.innerHTML=[...state.winter.matches].sort((a,b)=>b.date.localeCompare(a.date)).map(m=>{
-    const d=new Date(m.date+'T12:00:00'),lbl=d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
-    const t1w=m.s1>m.s2;
-    return `<div class="match-card"><div class="match-header"><span class="match-date-label">${lbl}</span>${m.week?`<span class="wk-pill">Week ${m.week}</span>`:''}</div>
-    <div class="match-body">
-      <div class="team">${m.t1.map(p=>`<div class="team-player">${p}</div>`).join('')}</div>
-      <div class="score-box"><div class="${t1w?'score-win':''}"><span class="score-num">${m.s1}</span></div><span class="score-sep">–</span><div class="${!t1w?'score-win':''}"><span class="score-num">${m.s2}</span></div></div>
-      <div class="team right">${m.t2.map(p=>`<div class="team-player">${p}</div>`).join('')}</div>
-    </div></div>`;
-  }).join('');
-}
-
-function renderWPlayers() {
-  const el=document.getElementById('wb-players');
-  if(!state.winter.players.length){el.innerHTML='<div class="empty-state" style="grid-column:1/-1">No players added yet</div>';return;}
-  const st={};
-  state.winter.players.forEach(p=>st[p]={pts:0,tot:0});
-  state.winter.matches.forEach(m=>[...m.t1,...m.t2].forEach(p=>{if(!st[p])return;const w=m.t1.includes(p)?m.s1:m.s2,l=m.t1.includes(p)?m.s2:m.s1;st[p].pts+=w;st[p].tot+=w+l;}));
-  el.innerHTML=state.winter.players.map(p=>{
-    const eff=st[p].tot?Math.round(st[p].pts/st[p].tot*100)+'%':'—';
-    const ini=p.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
-    return `<div class="player-card"><div class="av">${ini}</div><div class="pname">${p}</div><div class="pstat">${st[p].pts} pts · ${eff}</div></div>`;
-  }).join('');
-}
-
-// ─── SPRING DATA ──────────────────────────────────────────────
-const SPRING_MATCHES = [
-  // ── Week 1 · Court 1 · 7:00 PM — Robb Warren's OWN slot, points COUNT ──
-  { date:'2026-03-31', week:1, court:'Court 1', time:'7:00 PM',
-    t1:['Robb Warren','Shelby/Jack'], t2:["Tim O'Brien",'Cliff Tribus'], s1:2, s2:6,
-    subs:[] },
-  { date:'2026-03-31', week:1, court:'Court 1', time:'7:00 PM',
-    t1:['Robb Warren',"Tim O'Brien"], t2:['Shelby/Jack','Cliff Tribus'], s1:5, s2:3,
-    subs:[] },
-  { date:'2026-03-31', week:1, court:'Court 1', time:'7:00 PM',
-    t1:['Robb Warren','Cliff Tribus'], t2:['Shelby/Jack',"Tim O'Brien"], s1:6, s2:2,
-    subs:[] },
-
-  // ── Week 1 · Court 1 · 5:30 PM — Robb subbing Missy's slot, Robb's points EXCLUDED ──
-  { date:'2026-03-31', week:1, court:'Court 1', time:'5:30 PM',
-    t1:['Robb Warren','George Frese'], t2:['Marc Gerothanas','Jay Issacson'], s1:4, s2:4,
-    subs:['Robb Warren'] },
-  { date:'2026-03-31', week:1, court:'Court 1', time:'5:30 PM',
-    t1:['Robb Warren','Marc Gerothanas'], t2:['George Frese','Jay Issacson'], s1:8, s2:0,
-    subs:['Robb Warren'] },
-  { date:'2026-03-31', week:1, court:'Court 1', time:'5:30 PM',
-    t1:['Robb Warren','Jay Issacson'], t2:['George Frese','Marc Gerothanas'], s1:1, s2:7,
-    subs:['Robb Warren'] },
-
-  // ── Week 1 · Court 2 · 5:30 PM — Tammy subbing Kathleen's slot, Tammy's points EXCLUDED ──
-  { date:'2026-03-31', week:1, court:'Court 2', time:'5:30 PM',
-    t1:['Eric Engen','Tammy Krez'], t2:['Patrick Grant','Will Wait'], s1:1, s2:7,
-    subs:['Tammy Krez'] },
-  { date:'2026-03-31', week:1, court:'Court 2', time:'5:30 PM',
-    t1:['Eric Engen','Patrick Grant'], t2:['Tammy Krez','Will Wait'], s1:3, s2:5,
-    subs:['Tammy Krez'] },
-  { date:'2026-03-31', week:1, court:'Court 2', time:'5:30 PM',
-    t1:['Eric Engen','Will Wait'], t2:['Tammy Krez','Patrick Grant'], s1:4, s2:4,
-    subs:['Tammy Krez'] },
-
-  // ── Week 1 · Court 2 · 7:00 PM — Tammy's OWN slot, points COUNT ──
-  { date:'2026-03-31', week:1, court:'Court 2', time:'7:00 PM',
-    t1:['Felipe Quaassdorff','Josh Pelletter'], t2:['JD Maloney','Tammy Krez'], s1:5, s2:3,
-    subs:[] },
-  { date:'2026-03-31', week:1, court:'Court 2', time:'7:00 PM',
-    t1:['Felipe Quaassdorff','JD Maloney'], t2:['Josh Pelletter','Tammy Krez'], s1:4, s2:4,
-    subs:[] },
-  { date:'2026-03-31', week:1, court:'Court 2', time:'7:00 PM',
-    t1:['Felipe Quaassdorff','Tammy Krez'], t2:['Josh Pelletter','JD Maloney'], s1:4, s2:4,
-    subs:[] },
-
-  // ── Week 2 · Court 1 · 5:30 PM — Jay, Patrick, JD, Cliff all own slots ──
-  { date:'2026-04-07', week:2, court:'Court 1', time:'5:30 PM',
-    t1:['Jay Issacson','Patrick Grant'], t2:['JD Maloney','Cliff Tribus'], s1:0, s2:8, subs:[] },
-  { date:'2026-04-07', week:2, court:'Court 1', time:'5:30 PM',
-    t1:['Jay Issacson','JD Maloney'], t2:['Patrick Grant','Cliff Tribus'], s1:3, s2:5, subs:[] },
-  { date:'2026-04-07', week:2, court:'Court 1', time:'5:30 PM',
-    t1:['Jay Issacson','Cliff Tribus'], t2:['Patrick Grant','JD Maloney'], s1:4, s2:4, subs:[] },
-
-  // ── Week 2 · Court 1 · 7:00 PM — Missy & Eric own slots · Will Wait subbed by Hugh · Tim O'Brien subbing Felipe ──
-  { date:'2026-04-07', week:2, court:'Court 1', time:'7:00 PM',
-    t1:['Missy Dunn','Hugh'], t2:["Tim O'Brien",'Eric Engen'], s1:5, s2:3, subs:['Hugh',"Tim O'Brien"] },
-  { date:'2026-04-07', week:2, court:'Court 1', time:'7:00 PM',
-    t1:['Missy Dunn',"Tim O'Brien"], t2:['Hugh','Eric Engen'], s1:3, s2:5, subs:['Hugh',"Tim O'Brien"] },
-  { date:'2026-04-07', week:2, court:'Court 1', time:'7:00 PM',
-    t1:['Missy Dunn','Eric Engen'], t2:['Hugh',"Tim O'Brien"], s1:2, s2:6, subs:['Hugh',"Tim O'Brien"] },
-
-  // ── Week 2 · Court 2 · 5:30 PM — Kathleen, Felipe, Marc, Shelby/Jack own slots ──
-  { date:'2026-04-07', week:2, court:'Court 2', time:'5:30 PM',
-    t1:['Kathleen McNeil','Felipe Quaassdorff'], t2:['Marc Gerothanas','Shelby/Jack'], s1:2, s2:6, subs:[] },
-  { date:'2026-04-07', week:2, court:'Court 2', time:'5:30 PM',
-    t1:['Kathleen McNeil','Marc Gerothanas'], t2:['Felipe Quaassdorff','Shelby/Jack'], s1:7, s2:1, subs:[] },
-  { date:'2026-04-07', week:2, court:'Court 2', time:'5:30 PM',
-    t1:['Kathleen McNeil','Shelby/Jack'], t2:['Felipe Quaassdorff','Marc Gerothanas'], s1:2, s2:6, subs:[] },
-
-  // ── Week 2 · Court 2 · 7:00 PM — Josh, Tammy, George own slots · Robb Warren subbing ──
-  { date:'2026-04-07', week:2, court:'Court 2', time:'7:00 PM',
-    t1:['Josh Pelletter','Tammy Krez'], t2:['George Frese','Robb Warren'], s1:6, s2:2, subs:['Robb Warren'] },
-  { date:'2026-04-07', week:2, court:'Court 2', time:'7:00 PM',
-    t1:['Josh Pelletter','George Frese'], t2:['Tammy Krez','Robb Warren'], s1:6, s2:2, subs:['Robb Warren'] },
-  { date:'2026-04-07', week:2, court:'Court 2', time:'7:00 PM',
-    t1:['Josh Pelletter','Robb Warren'], t2:['Tammy Krez','George Frese'], s1:4, s2:4, subs:['Robb Warren'] },
-
-  // ── Week 3 · Wednesday makeup · Court 1 — all own slots ──
-  { date:'2026-04-16', week:3, court:'Court 1', time:'Wednesday',
-    t1:['George Frese','Tammy Krez'], t2:['Eric Engen','Felipe Quaassdorff'], s1:5, s2:3, subs:[] },
-  { date:'2026-04-16', week:3, court:'Court 1', time:'Wednesday',
-    t1:['George Frese','Eric Engen'], t2:['Tammy Krez','Felipe Quaassdorff'], s1:2, s2:6, subs:[] },
-  { date:'2026-04-16', week:3, court:'Court 1', time:'Wednesday',
-    t1:['George Frese','Felipe Quaassdorff'], t2:['Tammy Krez','Eric Engen'], s1:5, s2:3, subs:[] },
-
-  // ── Week 3 · Wednesday makeup · Court 2 — all own slots ──
-  { date:'2026-04-16', week:3, court:'Court 2', time:'Wednesday',
-    t1:['Cliff Tribus','Marc Gerothanas'], t2:['Missy Dunn','Patrick Grant'], s1:6, s2:2, subs:[] },
-  { date:'2026-04-16', week:3, court:'Court 2', time:'Wednesday',
-    t1:['Cliff Tribus','Missy Dunn'], t2:['Marc Gerothanas','Patrick Grant'], s1:4, s2:4, subs:[] },
-  { date:'2026-04-16', week:3, court:'Court 2', time:'Wednesday',
-    t1:['Cliff Tribus','Patrick Grant'], t2:['Marc Gerothanas','Missy Dunn'], s1:4, s2:4, subs:[] },
-
-  // ── Week 4 · Court 1 · 5:30 PM — all own slots ──
-  { date:'2026-04-21', week:4, court:'Court 1', time:'5:30 PM',
-    t1:['Eric Engen','George Frese'], t2:['Felipe Quaassdorff','Marc Gerothanas'], s1:3, s2:5, subs:[] },
-  { date:'2026-04-21', week:4, court:'Court 1', time:'5:30 PM',
-    t1:['Eric Engen','Felipe Quaassdorff'], t2:['George Frese','Marc Gerothanas'], s1:5, s2:3, subs:[] },
-  { date:'2026-04-21', week:4, court:'Court 1', time:'5:30 PM',
-    t1:['Eric Engen','Marc Gerothanas'], t2:['George Frese','Felipe Quaassdorff'], s1:5, s2:3, subs:[] },
-
-  // ── Week 4 · Court 2 · 5:30 PM — Robb Warren (Sub Missy) & Jay Issacson (Sub JH) excluded ──
-  { date:'2026-04-21', week:4, court:'Court 2', time:'5:30 PM',
-    t1:['Kathleen McNeil','Will Wait'], t2:['Robb Warren','Jay Issacson'], s1:4, s2:4, subs:['Robb Warren','Jay Issacson'] },
-  { date:'2026-04-21', week:4, court:'Court 2', time:'5:30 PM',
-    t1:['Kathleen McNeil','Robb Warren'], t2:['Will Wait','Jay Issacson'], s1:0, s2:8, subs:['Robb Warren','Jay Issacson'] },
-  { date:'2026-04-21', week:4, court:'Court 2', time:'5:30 PM',
-    t1:['Kathleen McNeil','Jay Issacson'], t2:['Will Wait','Robb Warren'], s1:4, s2:4, subs:['Robb Warren','Jay Issacson'] },
-
-  // ── Week 4 · Court 1 · 7:00 PM — Tim O'Brien (Sub F) & Tammy Krez (Sub Kathleen) excluded ──
-  { date:'2026-04-21', week:4, court:'Court 1', time:'7:00 PM',
-    t1:["Tim O'Brien",'Tammy Krez'], t2:['Patrick Grant','Missy Dunn'], s1:4, s2:4, subs:["Tim O'Brien",'Tammy Krez'] },
-  { date:'2026-04-21', week:4, court:'Court 1', time:'7:00 PM',
-    t1:["Tim O'Brien",'Patrick Grant'], t2:['Tammy Krez','Missy Dunn'], s1:6, s2:2, subs:["Tim O'Brien",'Tammy Krez'] },
-  { date:'2026-04-21', week:4, court:'Court 1', time:'7:00 PM',
-    t1:["Tim O'Brien",'Missy Dunn'], t2:['Tammy Krez','Patrick Grant'], s1:5, s2:3, subs:["Tim O'Brien",'Tammy Krez'] },
-
-  // ── Week 4 · Court 2 · 7:00 PM — Will Wait subbing for Cliff, both excluded ──
-  { date:'2026-04-21', week:4, court:'Court 2', time:'7:00 PM',
-    t1:['JD Maloney','Shelby/Jack'], t2:['Will Wait','Josh Pelletter'], s1:2, s2:6, subs:['Will Wait','Cliff Tribus'] },
-  { date:'2026-04-21', week:4, court:'Court 2', time:'7:00 PM',
-    t1:['JD Maloney','Will Wait'], t2:['Shelby/Jack','Josh Pelletter'], s1:7, s2:1, subs:['Will Wait','Cliff Tribus'] },
-  { date:'2026-04-21', week:4, court:'Court 2', time:'7:00 PM',
-    t1:['JD Maloney','Josh Pelletter'], t2:['Shelby/Jack','Will Wait'], s1:6, s2:2, subs:['Will Wait','Cliff Tribus'] },
-
-  // ── Week 5 · May 5 · Split Phase Week 1 ──
-  // Upper League Court 1 5:30: Will=14, Felipe=12, Tammy=12, Cliff=10
-  { date:'2026-05-05', week:5, court:'Court 1', time:'5:30 PM',
-    aggregate:true, players:{'Will Wait':14,'Felipe Quaassdorff':12,'Tammy Krez':12,'Cliff Tribus':10}, gamesPlayed:24, subs:[] },
-
-  // Upper League Court 1 7:00: Marc=13, JD=15, Josh=11, Patrick=9
-  { date:'2026-05-05', week:5, court:'Court 1', time:'7:00 PM',
-    aggregate:true, players:{'Marc Gerothanas':13,'JD Maloney':15,'Josh Pelletter':11,'Patrick Grant':9}, gamesPlayed:24, subs:[] },
-
-  // Lower League Court 2 5:30: Jack=13, Robb=13, Missy=11, Tim=11
-  { date:'2026-05-05', week:5, court:'Court 2', time:'5:30 PM',
-    aggregate:true, players:{'Shelby/Jack':13,'Robb Warren':13,'Missy Dunn':11,"Tim O'Brien":11}, gamesPlayed:24, subs:[] },
-
-  // ── Week 6 · May 12 · Split Phase Week 2 ──
-  // Upper League Court 2 5:30 PM: CANCELLED (Will, Josh, JD, Tammy — no scores)
-  // Upper League Court 2 7:00 PM: Felipe=12, Marc=14, Cliff=12, Patrick=10
-  { date:'2026-05-12', week:6, court:'Court 2', time:'7:00 PM',
-    aggregate:true, players:{'Felipe Quaassdorff':12,'Marc Gerothanas':14,'Cliff Tribus':12,'Patrick Grant':10}, gamesPlayed:24, subs:[] },
-
-  // Lower League Court 1 5:30 PM: Robb=15, Kathleen=13, Missy=11, Jay=9
-  { date:'2026-05-12', week:6, court:'Court 1', time:'5:30 PM',
-    aggregate:true, players:{'Robb Warren':15,'Kathleen McNeil':13,'Missy Dunn':11,'Jay Issacson':9}, gamesPlayed:24, subs:[] },
-
-  // Lower League Court 1 7:00 PM: George=15, Eric=11, Jack=11, Tim=11
-  { date:'2026-05-12', week:6, court:'Court 1', time:'7:00 PM',
-    aggregate:true, players:{'George Frese':15,'Eric Engen':11,'Shelby/Jack':11,"Tim O'Brien":11}, gamesPlayed:24, subs:[] },
-
-  // ── Week 7 · May 19 · FINAL WEEK ──
-  // Upper League Court 1 5:30: Will=14, Marc=14, Felipe=12, Tammy=8
-  { date:'2026-05-19', week:7, court:'Court 1', time:'5:30 PM',
-    aggregate:true, players:{'Will Wait':14,'Marc Gerothanas':14,'Felipe Quaassdorff':12,'Tammy Krez':8}, gamesPlayed:24, subs:[] },
-
-  // Upper League Court 1 7:00: Patrick=10 (played with 3 subs — only Patrick counted)
-  { date:'2026-05-19', week:7, court:'Court 1', time:'7:00 PM',
-    aggregate:true, players:{'Patrick Grant':10}, gamesPlayed:24, subs:[] },
-
-  // Lower League Court 1 5:30: Eric=16, George=14, Missy=10, Kathleen=8
-  { date:'2026-05-19', week:7, court:'Court 1', time:'5:30 PM',
-    aggregate:true, players:{'Eric Engen':16,'George Frese':14,'Missy Dunn':10,'Kathleen McNeil':8}, gamesPlayed:24, subs:[] },
-
-  // Lower League Court 2 7:00: Robb=16, Jay=10 (subs not counted)
-  { date:'2026-05-19', week:7, court:'Court 2', time:'7:00 PM',
-    aggregate:true, players:{'Robb Warren':16,'Jay Issacson':10}, gamesPlayed:24, subs:[] },
+// ================= DATA =================
+// Add new players to this array as needed.
+const players = [
+  "James Maloney",
+  "Andrew Waclawik",
+  "Patrick Grant",
+  "Eric Engen",
+  "Will Wait",
+  "Joshua Pelletter",
+  "Robb Warren",
+  "Tammy Krez",
+  "Cliff Tribus",
+  "Marc Gerothanas",
+  "Missy Dunn",
+  "John Young",
+  "Felipe Quaassdorff"
 ];
 
-// Players whose points COUNT in standings (not subs)
-const SPRING_PLAYERS = [
-  'Felipe Quaassdorff','Cliff Tribus','Patrick Grant','JD Maloney',
-  'Kathleen McNeil','Shelby/Jack','George Frese',
-  "Tim O'Brien",'Tammy Krez','Robb Warren','Josh Pelletter',
-  'Will Wait','Eric Engen','Marc Gerothanas','Jay Issacson','Missy Dunn'
+// Each week: date label, and courts (groups of players who played together that day).
+// Each court has a list of {name, wins} out of 24 games played.
+// To add a new week, copy the block below and push it into `weeks`.
+const weeks = [
+  {
+    label: "Week 1 — September 9",
+    courts: [
+      {
+        title: "Court A",
+        players: [
+          { name: "Will Wait", wins: 14 },
+          { name: "Felipe Quaassdorff", wins: 12 },
+          { name: "Marc Gerothanas", wins: 12 },
+          { name: "Tammy Krez", wins: 10 }
+        ]
+      },
+      {
+        title: "Court B",
+        players: [
+          { name: "James Maloney", wins: 14 },
+          { name: "Cliff Tribus", wins: 14 },
+          { name: "John Young", wins: 10 },
+          { name: "Eric Engen", wins: 10 }
+        ]
+      }
+    ]
+  }
+  // Week 2 goes here once matchups/results are set.
 ];
 
-// These players' points are NEVER counted in standings (permanent subs only)
-const PERMANENT_SUBS = [];
+// Matchups that are set but haven't been played yet (no scores).
+const upcoming = {
+  label: "Week 2 — Matchups",
+  courts: [
+    {
+      title: "Court A",
+      players: ["Felipe Quaassdorff", "Eric Engen", "Andy Waclawik", "Robb Warren"]
+    },
+    {
+      title: "Court B",
+      players: ["Marc Gerothanas", "Cliff Tribus", "Patrick Grant", "Joshua Pelletter"]
+    }
+  ]
+};
 
-// ─── SPRING RENDER ────────────────────────────────────────────
-// Split phase rosters
-const UPPER_LEAGUE = ['Marc Gerothanas','Will Wait','Cliff Tribus','Josh Pelletter','JD Maloney','Tammy Krez','Felipe Quaassdorff','Patrick Grant'];
-const LOWER_LEAGUE = ['George Frese','Missy Dunn','Eric Engen','Kathleen McNeil','Robb Warren',"Tim O'Brien",'Shelby/Jack','Jay Issacson'];
-const SPLIT_WEEK_START = 5; // weeks >= 5 count for split phase standings
+const GAMES_PER_DAY = 24;
 
-function renderSStandings() {
-  const medals = ['🥇','🥈','🥉'];
-
-  // ── Regular season stats (weeks 1–4) ──
-  const regSt = {};
-  SPRING_MATCHES.filter(m => m.week <= 4).forEach(m => {
-    if (m.aggregate) return;
-    [...m.t1,...m.t2].forEach(p => {
-      if (m.subs && m.subs.includes(p)) return;
-      if (!regSt[p]) regSt[p] = {won:0, tot:0};
-      const onT1 = m.t1.includes(p);
-      regSt[p].won += onT1 ? m.s1 : m.s2;
-      regSt[p].tot += m.s1 + m.s2;
+// ================= RENDER: STANDINGS =================
+function computeStandings(){
+  const totals = {};
+  weeks.forEach(week => {
+    week.courts.forEach(court => {
+      court.players.forEach(p => {
+        if(!totals[p.name]) totals[p.name] = { won:0, played:0 };
+        totals[p.name].won += p.wins;
+        totals[p.name].played += GAMES_PER_DAY;
+      });
     });
   });
 
-  // ── Split phase stats (weeks 5+) — fresh scores ──
-  const splitSt = {};
-  SPRING_MATCHES.filter(m => m.week >= SPLIT_WEEK_START).forEach(m => {
-    if (m.aggregate) {
-      // Aggregate format: players object with individual totals
-      Object.entries(m.players).forEach(([p, won]) => {
-        if (!splitSt[p]) splitSt[p] = {won:0, tot:0};
-        splitSt[p].won += won;
-        splitSt[p].tot += m.gamesPlayed;
-      });
-    } else {
-      [...m.t1,...m.t2].forEach(p => {
-        if (m.subs && m.subs.includes(p)) return;
-        if (!splitSt[p]) splitSt[p] = {won:0, tot:0};
-        const onT1 = m.t1.includes(p);
-        splitSt[p].won += onT1 ? m.s1 : m.s2;
-        splitSt[p].tot += m.s1 + m.s2;
-      });
-    }
-  });
+  const ranked = Object.entries(totals)
+    .map(([name, t]) => ({ name, ...t, pct: t.played ? (t.won / t.played * 100) : 0 }))
+    .sort((a,b) => b.pct - a.pct);
 
-  const renderRows = (players, id, stats) => {
-    const el = document.getElementById(id);
-    if (!players.length) { el.innerHTML='<tr><td colspan="6"><div class="empty-state">No data yet</div></td></tr>'; return; }
+  const notYetPlayed = players.filter(p => !totals[p]);
 
-    // Count weeks played per player
-    const weeksPlayed = {};
-    SPRING_MATCHES.filter(m => m.week >= SPLIT_WEEK_START).forEach(m => {
-      const pp = m.aggregate ? Object.keys(m.players) : [...(m.t1||[]),...(m.t2||[])].filter(p => !m.subs||!m.subs.includes(p));
-      pp.forEach(p => { if (!weeksPlayed[p]) weeksPlayed[p] = new Set(); weeksPlayed[p].add(m.week); });
-    });
-
-    const ranked = players
-      .map(p => ({name:p, ...(stats[p]||{won:0,tot:0}), weeks: weeksPlayed[p]?weeksPlayed[p].size:0}))
-      .sort((a,b) => { const ea=a.tot?a.won/a.tot:0, eb=b.tot?b.won/b.tot:0; return eb-ea||b.won-a.won; });
-
-    const eligible = ranked.filter(p => p.weeks >= 2);
-    const notEligible = ranked.filter(p => p.weeks < 2);
-
-    const hasSplitData = ranked.some(p => p.tot > 0);
-    if (!hasSplitData) {
-      el.innerHTML='<tr><td colspan="6"><div class="empty-state">Split phase starting soon — scores reset ✨</div></td></tr>'; return;
-    }
-
-    const renderGroup = (group, offset=0) => group.map((p,i) => {
-      const eff = p.tot ? (p.won/p.tot*100).toFixed(1)+'%' : '—';
-      const gl = Math.max(0, p.tot - p.won);
-      return `<tr><td class="rank">${medals[i+offset]||i+offset+1}</td><td class="player-name">${p.name}</td><td class="pts-s">${p.won}</td><td class="eff">${eff}</td><td>${p.won}</td><td>${gl}</td></tr>`;
-    }).join('');
-
-    let html = renderGroup(eligible);
-    if (notEligible.length) {
-      html += `<tr><td colspan="6" style="padding:8px 16px;font-size:11px;font-family:'DM Mono',monospace;color:var(--muted);background:var(--surface2);letter-spacing:0.08em">⚠️ PLAYED ONLY 1 MATCH — NOT ELIGIBLE FOR TITLE</td></tr>`;
-      html += renderGroup(notEligible, eligible.length);
-    }
-    el.innerHTML = html;
-  };
-
-  // Render split phase leagues (fresh scores)
-  renderRows(UPPER_LEAGUE, 'sb-upper', splitSt);
-  renderRows(LOWER_LEAGUE, 'sb-lower', splitSt);
-
-  // Render regular season final standings (all players, reg season only)
-  const allPlayers = [...UPPER_LEAGUE, ...LOWER_LEAGUE];
-  const regRanked = allPlayers
-    .map(p => ({name:p, ...(regSt[p]||{won:0,tot:0})}))
-    .sort((a,b) => { const ea=a.tot?a.won/a.tot:0, eb=b.tot?b.won/b.tot:0; return eb-ea||b.won-a.won; });
-  const el = document.getElementById('sb-standings');
-  el.innerHTML = regRanked.map((p,i) => {
-    const eff = p.tot ? (p.won/p.tot*100).toFixed(1)+'%' : '—';
-    const gl = Math.max(0, p.tot - p.won);
-    const league = UPPER_LEAGUE.includes(p.name) ? '<span style="font-size:10px;color:var(--spring);font-family:var(--font-mono,monospace)">🔥 Upper</span>' : '<span style="font-size:10px;color:var(--accent2);font-family:var(--font-mono,monospace)">🎾 Lower</span>';
-    return `<tr><td class="rank">${medals[i]||i+1}</td><td class="player-name">${p.name} ${league}</td><td class="pts-s">${p.won}</td><td class="eff">${eff}</td><td>${p.won}</td><td>${gl}</td></tr>`;
-  }).join('');
+  return { ranked, notYetPlayed };
 }
 
-function renderSResults() {
-  const el = document.getElementById('sb-results');
-  if (!SPRING_MATCHES.length) { el.innerHTML='<div class="empty-state">No results yet</div>'; return; }
+function renderStandings(){
+  const { ranked, notYetPlayed } = computeStandings();
+  const el = document.getElementById('standings');
 
-  // Group by week → court+time
-  const weeks = {};
-  SPRING_MATCHES.forEach(m => {
-    const wk = m.week;
-    const slot = `${m.court} · ${m.time}`;
-    if (!weeks[wk]) weeks[wk] = {};
-    if (!weeks[wk][slot]) weeks[wk][slot] = [];
-    weeks[wk][slot].push(m);
+  let html = `<div class="standings-row head">
+      <span>#</span><span>Player</span><span style="text-align:right">Win %</span><span></span>
+    </div>`;
+
+  ranked.forEach((p, i) => {
+    html += `<div class="standings-row">
+      <span class="rank ${i<3?'top':''}">${i+1}</span>
+      <span>
+        <span class="player-name">${p.name}</span>
+        <div class="player-sub">${p.won}/${p.played} games won</div>
+      </span>
+      <span class="pct">${p.pct.toFixed(1)}%</span>
+      <span class="bar-track"><span class="bar-fill" style="width:${p.pct}%"></span></span>
+    </div>`;
   });
 
-  const weekDates = {1:'Mar 31, 2026', 2:'Apr 7, 2026', 3:'Apr 14, 2026', 4:'Apr 21, 2026'};
-  let html = '';
-
-  Object.keys(weeks).sort().forEach(wk => {
-    html += `<div style="margin-bottom:24px">
-      <div class="sub-section-title" style="color:var(--spring);font-size:18px;margin-bottom:12px">Week ${wk} · ${weekDates[wk]||''}</div>`;
-
-    Object.entries(weeks[wk]).forEach(([slot, matches]) => {
-      const isC1 = slot.includes('Court 1');
-      const hdrColor = isC1 ? '#4CAF50' : '#FF7043';
-      const bgColor = isC1 ? 'rgba(27,94,32,0.08)' : 'rgba(191,54,12,0.08)';
-      html += `<div style="margin-bottom:12px">
-        <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:${hdrColor};background:${bgColor};padding:7px 14px;border-radius:8px 8px 0 0;border:1px solid ${hdrColor}30">${slot}</div>`;
-
-      matches.forEach((m, i) => {
-        let bodyHtml;
-        if (m.aggregate) {
-          const sorted = Object.entries(m.players).sort((a,b)=>b[1]-a[1]);
-          bodyHtml = `<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
-            ${sorted.map(([p,w])=>`<div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px 12px;display:flex;justify-content:space-between;align-items:center">
-              <span style="font-weight:600;font-size:13px">${p}</span>
-              <span style="font-family:monospace;color:var(--spring);font-weight:700">${w}<span style="color:var(--muted);font-size:10px">/24</span></span>
-            </div>`).join('')}
-          </div>`;
-        } else {
-          const t1w = m.s1 > m.s2;
-          const t1Label = m.t1.map(p => m.subs&&m.subs.includes(p) ? `<span style="color:var(--muted);font-style:italic">${p} (sub)</span>` : `<span>${p}</span>`).join(' + ');
-          const t2Label = m.t2.map(p => m.subs&&m.subs.includes(p) ? `<span style="color:var(--muted);font-style:italic">${p} (sub)</span>` : `<span>${p}</span>`).join(' + ');
-          bodyHtml = `<div class="match-body">
-            <div class="team" style="font-size:13px">${t1Label}</div>
-            <div class="score-box">
-              <div class="${t1w?'score-win-s':''}"><span class="score-num">${m.s1}</span></div>
-              <span class="score-sep">–</span>
-              <div class="${!t1w?'score-win-s':''}"><span class="score-num">${m.s2}</span></div>
-            </div>
-            <div class="team right" style="font-size:13px">${t2Label}</div>
-          </div>`;
-        }
-        html += `<div class="match-card" style="border-radius:${i===matches.length-1?'0 0 8px 8px':'0'};border-top:none;margin-bottom:0">
-          <div class="match-header"><span class="match-date-label">${m.aggregate ? 'Individual Totals' : `Match ${i+1} of 3`}</span></div>
-          ${bodyHtml}
-        </div>`;
-      });
-      html += `</div>`;
-    });
-    html += `</div>`;
-  });
+  if(notYetPlayed.length){
+    html += `<div style="padding-top:14px;">
+      <span class="not-played">Not yet played: ${notYetPlayed.join(', ')}</span>
+    </div>`;
+  }
 
   el.innerHTML = html;
 }
 
-function renderSPlayers() {
-  const el = document.getElementById('sb-players');
-  const st = {};
-  SPRING_PLAYERS.forEach(p => st[p] = {won:0, tot:0});
-  SPRING_MATCHES.forEach(m => {
-    if (m.aggregate) {
-      Object.entries(m.players).forEach(([p, won]) => {
-        if (!st[p]) st[p] = {won:0, tot:0};
-        st[p].won += won;
-        st[p].tot += m.gamesPlayed;
+// ================= RENDER: WEEKS =================
+function renderWeeks(){
+  const el = document.getElementById('weeks');
+  let html = '';
+
+  weeks.forEach(week => {
+    html += `<div class="week-block">
+      <div class="week-label">${week.label}</div>`;
+    week.courts.forEach(court => {
+      html += `<div class="court-group">
+        <div class="court-title">${court.title}</div>
+        <div class="court-players">`;
+      court.players.forEach(p => {
+        html += `<span class="name">${p.name}</span><span class="wins">${p.wins}/${GAMES_PER_DAY}</span>`;
       });
-      return;
-    }
-    [...m.t1,...m.t2].forEach(p => {
-      if (PERMANENT_SUBS.includes(p)) return;
-      if (m.subs && m.subs.includes(p)) return;
-      if (!st[p]) st[p] = {won:0, tot:0};
-      const onT1 = m.t1.includes(p);
-      st[p].won += onT1 ? m.s1 : m.s2;
-      st[p].tot += m.s1 + m.s2;
+      html += `</div></div>`;
     });
+    html += `</div>`;
   });
-  const display = SPRING_PLAYERS.filter(p => !PERMANENT_SUBS.includes(p));
-  if (!display.length) { el.innerHTML='<div class="empty-state" style="grid-column:1/-1">No players yet</div>'; return; }
-  el.innerHTML = display.map(p => {
-    const eff = st[p].tot ? (st[p].won/st[p].tot*100).toFixed(1)+'%' : '—';
-    const ini = p.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
-    return `<div class="player-card sc"><div class="av">${ini}</div><div class="pname">${p}</div><div class="pstat">${st[p].won} won · ${eff}</div></div>`;
-  }).join('');
+
+  if(upcoming && upcoming.courts && upcoming.courts.length){
+    html += `<div class="week-block">
+      <div class="week-label">${upcoming.label}</div>`;
+    upcoming.courts.forEach(court => {
+      html += `<div class="court-group">
+        <div class="court-title">${court.title}</div>
+        <div class="court-players">`;
+      court.players.forEach(name => {
+        html += `<span class="name">${name}</span><span class="wins">—</span>`;
+      });
+      html += `</div></div>`;
+    });
+    html += `</div>`;
+  } else {
+    html += `<div class="week-block">
+      <div class="week-label">Next Week</div>
+      <div class="empty-week">Sign-up open — matchups will be posted once availability is confirmed.</div>
+    </div>`;
+  }
+
+  el.innerHTML = html;
 }
 
-// ─── RENDER ALL ───────────────────────────────────────────────
-function renderAll(){renderWStandings();renderWResults();renderWPlayers();renderSStandings();renderSResults();renderSPlayers();}
+// ================= RENDER: ROSTER =================
+function renderRoster(){
+  const el = document.getElementById('roster');
+  el.innerHTML = players.map(p => `<div class="roster-item">${p}</div>`).join('');
+}
 
-// ─── INIT ─────────────────────────────────────────────────────
-load();
-renderAll();
-switchSeason('spring');
+renderStandings();
+renderWeeks();
+renderRoster();
 </script>
+
 </body>
 </html>
