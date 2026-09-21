@@ -170,7 +170,13 @@
     background:rgba(27,67,50,0.08);
     padding:4px 10px;
     border-radius:3px;
+    margin-bottom:8px;
+  }
+  .week-note{
+    font-size:13px;
+    color:var(--ink-soft);
     margin-bottom:12px;
+    font-style:italic;
   }
   .court-group{
     border:1px solid var(--line);
@@ -191,6 +197,7 @@
     font-size:15px;
   }
   .court-players .name{font-weight:500;}
+  .court-players .name.sub{font-style:italic; font-weight:400; color:var(--ink-soft);}
   .court-players .wins{color:var(--ink-soft); text-align:right;}
 
   .empty-week{
@@ -332,14 +339,14 @@ const players = [
 ];
 
 // Each week: date label, and courts (groups of players who played together that day).
-// Each court has a list of {name, wins} out of 24 games played.
-// To add a new week, copy the block below and push it into `weeks`.
+// Each court has a list of {name, wins, sub (optional true), didNotPlay (optional true)}.
+// Subs and no-shows are excluded from standings totals but shown here for the record.
 const weeks = [
   {
     label: "Week 1 — September 9",
     courts: [
       {
-        title: "Court A",
+        title: "Court 1",
         players: [
           { name: "Will Wait", wins: 14 },
           { name: "Felipe Quaassdorff", wins: 12 },
@@ -348,7 +355,7 @@ const weeks = [
         ]
       },
       {
-        title: "Court B",
+        title: "Court 2",
         players: [
           { name: "James Maloney", wins: 14 },
           { name: "Cliff Tribus", wins: 14 },
@@ -357,21 +364,44 @@ const weeks = [
         ]
       }
     ]
+  },
+  {
+    label: "Week 2 — September 16",
+    courts: [
+      {
+        title: "Court 1",
+        players: [
+          { name: "Felipe Quaassdorff", wins: 15 },
+          { name: "Eric Engen", wins: 13 },
+          { name: "Robb Warren", wins: 11 },
+          { name: "Andrew Waclawik", wins: 9 }
+        ]
+      },
+      {
+        title: "Court 2",
+        note: "Marc and Cliff weren't able to play — Stacy and George subbed in for them.",
+        players: [
+          { name: "Joshua Pelletter", wins: 13 },
+          { name: "Patrick Grant", wins: 11 },
+          { name: "Stacy", wins: 13, sub: true },
+          { name: "George", wins: 11, sub: true }
+        ]
+      }
+    ]
   }
-  // Week 2 goes here once matchups/results are set.
 ];
 
 // Matchups that are set but haven't been played yet (no scores).
 const upcoming = {
-  label: "Week 2 — Matchups",
+  label: "Week 3 — Matchups",
   courts: [
     {
-      title: "Court A",
-      players: ["Felipe Quaassdorff", "Eric Engen", "Andy Waclawik", "Robb Warren"]
+      title: "Court 1",
+      players: ["Andrew Waclawik", "Patrick Grant", "Eric Engen", "TBD"]
     },
     {
-      title: "Court B",
-      players: ["Marc Gerothanas", "Cliff Tribus", "Patrick Grant", "Joshua Pelletter"]
+      title: "Court 2",
+      players: ["Felipe Quaassdorff", "Marc Gerothanas", "James Maloney", "Tammy Krez"]
     }
   ]
 };
@@ -384,6 +414,7 @@ function computeStandings(){
   weeks.forEach(week => {
     week.courts.forEach(court => {
       court.players.forEach(p => {
+        if(p.sub || p.didNotPlay) return; // subs & no-shows don't count toward standings
         if(!totals[p.name]) totals[p.name] = { won:0, played:0 };
         totals[p.name].won += p.wins;
         totals[p.name].played += GAMES_PER_DAY;
@@ -439,10 +470,13 @@ function renderWeeks(){
       <div class="week-label">${week.label}</div>`;
     week.courts.forEach(court => {
       html += `<div class="court-group">
-        <div class="court-title">${court.title}</div>
-        <div class="court-players">`;
+        <div class="court-title">${court.title}</div>`;
+      if(court.note){
+        html += `<div class="week-note">${court.note}</div>`;
+      }
+      html += `<div class="court-players">`;
       court.players.forEach(p => {
-        html += `<span class="name">${p.name}</span><span class="wins">${p.wins}/${GAMES_PER_DAY}</span>`;
+        html += `<span class="name ${p.sub?'sub':''}">${p.name}${p.sub?' (sub)':''}</span><span class="wins">${p.wins}/${GAMES_PER_DAY}</span>`;
       });
       html += `</div></div>`;
     });
