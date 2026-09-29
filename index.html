@@ -388,20 +388,40 @@ const weeks = [
         ]
       }
     ]
+  },
+  {
+    label: "Week 3 — September 23",
+    courts: [
+      {
+        title: "Court 1",
+        note: "Jim wasn't able to play — Pedro subbed in for him.",
+        players: [
+          { name: "Marc Gerothanas", wins: 21 },
+          { name: "Felipe Quaassdorff", wins: 9 },
+          { name: "Tammy Krez", wins: 9 },
+          { name: "Pedro", wins: 9, sub: true }
+        ]
+      },
+      {
+        title: "Court 2",
+        players: [
+          { name: "Cliff Tribus", wins: 15 },
+          { name: "Patrick Grant", wins: 13 },
+          { name: "Andrew Waclawik", wins: 11 },
+          { name: "Eric Engen", wins: 9 }
+        ]
+      }
+    ]
   }
 ];
 
 // Matchups that are set but haven't been played yet (no scores).
 const upcoming = {
-  label: "Week 3 — Matchups",
+  label: "Week 4 — Matchups",
   courts: [
     {
       title: "Court 1",
-      players: ["Andrew Waclawik", "Patrick Grant", "Eric Engen", "TBD"]
-    },
-    {
-      title: "Court 2",
-      players: ["Felipe Quaassdorff", "Marc Gerothanas", "James Maloney", "Tammy Krez"]
+      players: ["Felipe Quaassdorff", "Eric Engen", "Andrew Waclawik", "Cliff Tribus"]
     }
   ]
 };
