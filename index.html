@@ -270,15 +270,25 @@
         <div class="label">First week</div>
         <div class="value">September 9</div>
       </div>
-      <div class="meta-item">
-        <div class="label">Extra slot</div>
-        <div class="value">7:00–8:30, if enough players</div>
-      </div>
     </div>
   </div>
 </div>
 
 <div class="wrap">
+
+  <!-- PLAYOFFS -->
+  <section>
+    <div class="section-title">WEEKS 7 AND 8</div>
+    <div class="section-heading">Playoff Format</div>
+    <ul class="format-list">
+      <li><span class="dot">•</span><span><strong>Sign-up:</strong> a form goes out for both weeks. If you can only make one week, still sign up and mark the day you can play. Players who can make both weeks get priority.</span></li>
+      <li><span class="dot">•</span><span><strong>King of the court:</strong> three matches each night, each played to a full set or 25 minutes, whichever comes first. If games are tied at 25 minutes, a tie-break to 4 (win by 2) decides it.</span></li>
+      <li><span class="dot">•</span><span><strong>Points:</strong> winning on Court 1 earns 2 points; winning on Court 2 earns 1 point. Points add up per player on the results sheet.</span></li>
+      <li><span class="dot">•</span><span><strong>Moving courts:</strong> the Court 2 winners move up to Court 1 and the Court 1 losers move down to Court 2, then the next match starts.</span></li>
+      <li><span class="dot">•</span><span><strong>New partners every match:</strong> picked at random with a racket spin. One player calls W (Wilson logo upright) and the other takes M (upside down), and the spin decides who switches.</span></li>
+      <li><span class="dot">•</span><span><strong>First draw each night</strong> comes from the first six weeks' ranking: 1st with 3rd vs 2nd with 4th, and 5th with 7th vs 6th with 8th.</span></li>
+    </ul>
+  </section>
 
   <!-- STANDINGS -->
   <section>
@@ -301,10 +311,8 @@
     <ul class="format-list">
       <li><span class="dot">•</span><span>Sign up each week — matchups aren't fixed in advance. I'll pair you with different players for the first 6 weeks.</span></li>
       <li><span class="dot">•</span><span>Signing up doesn't guarantee a spot. It depends on sign-up order and total players that week.</span></li>
-      <li><span class="dot">•</span><span>If more than 8 sign up (say 12), the last 4 to sign up will be asked about the 7:00–8:30 slot.</span></li>
       <li><span class="dot">•</span><span>Each day: alternating partners, 8 games per partner combination (2 serves each), 24 games total.</span></li>
       <li><span class="dot">•</span><span>Ranking is based on percentage of games won out of games played.</span></li>
-      <li><span class="dot">•</span><span>The final 2 weeks are a playoff round between the top-ranked players.</span></li>
     </ul>
   </section>
 
@@ -449,23 +457,34 @@ const weeks = [
         ]
       }
     ]
+  },
+  {
+    label: "Week 6 — October 14",
+    courts: [
+      {
+        title: "Court 1",
+        players: [
+          { name: "Felipe Quaassdorff", wins: 15 },
+          { name: "Cliff Tribus", wins: 15 },
+          { name: "Andrew Waclawik", wins: 9 },
+          { name: "Tammy Krez", wins: 9 }
+        ]
+      },
+      {
+        title: "Court 2",
+        players: [
+          { name: "Marc Gerothanas", wins: 17 },
+          { name: "Patrick Grant", wins: 13 },
+          { name: "Eric Engen", wins: 11 },
+          { name: "James Maloney", wins: 7 }
+        ]
+      }
+    ]
   }
 ];
 
 // Matchups that are set but haven't been played yet (no scores).
-const upcoming = {
-  label: "Week 6 — October 14 Matchups",
-  courts: [
-    {
-      title: "Court 1",
-      players: ["Felipe Quaassdorff", "Tammy Krez", "Andrew Waclawik", "Cliff Tribus"]
-    },
-    {
-      title: "Court 2",
-      players: ["Eric Engen", "Marc Gerothanas", "Patrick Grant", "James Maloney"]
-    }
-  ]
-};
+const upcoming = { label: "Playoffs", courts: [] };
 
 const GAMES_PER_DAY = 24;
 
@@ -559,8 +578,8 @@ function renderWeeks(){
     html += `</div>`;
   } else {
     html += `<div class="week-block">
-      <div class="week-label">Next Week</div>
-      <div class="empty-week">Sign-up open — matchups will be posted once availability is confirmed.</div>
+      <div class="week-label">Playoffs — weeks 7 and 8</div>
+      <div class="empty-week">Playoffs (weeks 7–8): sign-up is open. Add the weeks you can play, even if it is only one.</div>
     </div>`;
   }
 
